@@ -7,23 +7,25 @@ export default async function handler(req, res) {
 
   try {
     const { system, userMsg } = req.body;
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system,
-        messages: [{ role: 'user', content: userMsg }],
-      }),
-    });
+    const prompt = system + '\n\n' + userMsg;
+    const GEMINI_KEY = process.env.GEMINI_API_KEY;
+
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: 500, temperature: 0.7 }
+        })
+      }
+    );
+
     const data = await response.json();
-    res.status(200).json({ text: data.content?.[0]?.text || '' });
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    res.status(200).json({ text });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ error: e.message, text: '' });
   }
 }
