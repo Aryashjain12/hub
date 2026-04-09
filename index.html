@@ -3,1246 +3,1713 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#1a6fcc">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Aryash Hub">
 <title>Aryash Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-:root{
-  --blue:#1a6fcc;--blue-lt:#e8f1fb;--blue-dk:#0d4a8a;
-  --green:#3a7d1e;--green-lt:#eaf3de;
-  --amber:#b56b00;--amber-lt:#fdf0d5;
-  --red:#c0392b;--red-lt:#fdecea;
-  --purple:#5b3fa0;--purple-lt:#f0eeff;
-  --gray:#6b7280;--border:rgba(0,0,0,0.09);
-  --bg:#f5f6f8;--card:#fff;--text:#111;--text2:#6b7280;
-}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);min-height:100vh;color:var(--text);}
-.app{max-width:430px;margin:0 auto;background:var(--bg);min-height:100vh;}
+  :root {
+    --bg: #F5F3EE;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE6;
+    --border: #E2DDD5;
+    --text: #1A1714;
+    --text2: #6B6560;
+    --text3: #A09A93;
+    --accent: #2563EB;
+    --accent2: #1D4ED8;
+    --green: #16A34A;
+    --orange: #EA580C;
+    --red: #DC2626;
+    --purple: #7C3AED;
+    --yellow: #CA8A04;
+    --radius: 16px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+  }
 
-/* AUTH */
-#auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:32px 24px;text-align:center;}
-.auth-logo{width:80px;height:80px;background:var(--blue);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px;}
-.auth-title{font-size:28px;font-weight:600;margin-bottom:8px;}
-.auth-sub{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:36px;max-width:300px;}
-.google-btn{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 24px;font-size:15px;font-weight:500;cursor:pointer;color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,0.08);width:100%;max-width:290px;justify-content:center;font-family:inherit;}
-.google-btn img{width:20px;height:20px;}
-.auth-note{font-size:12px;color:var(--text2);margin-top:14px;}
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 
-/* TOPBAR */
-.topbar{background:#fff;padding:12px 16px 6px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20;}
-.topbar-row{display:flex;justify-content:space-between;align-items:center;}
-.app-name{font-size:15px;font-weight:600;letter-spacing:-0.3px;}
-.app-date{font-size:11px;color:var(--text2);margin-top:1px;}
-.top-right{display:flex;align-items:center;gap:8px;}
-.streak-pill{background:var(--green-lt);color:var(--green);font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;}
-.icon-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;position:relative;}
-.notif-dot{position:absolute;top:4px;right:4px;width:7px;height:7px;background:#e74c3c;border-radius:50%;border:1.5px solid #fff;display:none;}
-.sync-bar{font-size:10px;color:var(--green);min-height:13px;margin-top:2px;transition:opacity .4s;}
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 80px;
+    font-size: 15px;
+  }
 
-/* NAV */
-.nav{display:flex;background:#fff;border-bottom:1px solid var(--border);overflow-x:auto;padding:0 4px;}
-.nav::-webkit-scrollbar{display:none;}
-.nb{flex-shrink:0;padding:9px 11px;font-size:11.5px;font-weight:500;color:var(--text2);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;font-family:inherit;}
-.nb.on{color:var(--blue);border-bottom-color:var(--blue);}
+  h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 
-/* SECTIONS */
-.sec{display:none;padding:12px;padding-bottom:90px;}
-.sec.on{display:block;}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
-.ct{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;}
+  /* HEADER */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 16px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+  .header-title { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; letter-spacing:-0.5px; }
+  .header-title span { color:var(--accent); }
+  .header-meta { font-size:12px; color:var(--text3); margin-top:1px; }
+  .header-actions { display:flex; gap:8px; align-items:center; }
+  .streak-badge {
+    background: linear-gradient(135deg, #FF6B35, #FF8C42);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family:'Syne',sans-serif;
+  }
+  .icon-btn {
+    width:36px; height:36px; border-radius:50%; background:var(--surface2);
+    border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    font-size:17px; transition:all 0.2s;
+  }
+  .icon-btn:hover { background:var(--border); }
 
-/* STATS */
-.stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px;}
-.stat2{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:10px;}
-.stile{background:#f8f9fb;border-radius:10px;padding:10px 8px;text-align:center;}
-.sv{font-size:22px;font-weight:600;}
-.sl{font-size:10.5px;color:var(--text2);margin-top:1px;}
+  /* TABS */
+  .tabs {
+    display:flex; gap:0; overflow-x:auto; scrollbar-width:none;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .tabs::-webkit-scrollbar { display:none; }
+  .tab {
+    flex-shrink:0; padding:10px 16px; font-size:13px; font-weight:500;
+    color:var(--text2); border:none; background:none; cursor:pointer;
+    border-bottom: 2.5px solid transparent; transition:all 0.2s;
+    font-family:'DM Sans',sans-serif;
+  }
+  .tab.active { color:var(--accent); border-bottom-color:var(--accent); font-weight:600; }
 
-/* FORMS */
-input,select,textarea{width:100%;font-family:inherit;font-size:13.5px;padding:9px 11px;border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text);outline:none;}
-input:focus,select:focus,textarea:focus{border-color:var(--blue);}
-textarea{resize:none;line-height:1.5;}
-.fl{font-size:11.5px;color:var(--text2);display:block;margin-bottom:5px;margin-top:12px;font-weight:500;}
-.fl:first-child{margin-top:0;}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
-.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
-.pbtn{width:100%;padding:11px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;font-family:inherit;}
-.pbtn:active{opacity:.85;}
-.pbtn.ghost{background:#f0f4fa;color:var(--blue);border:1px solid #c5d8f5;}
-.pbtn.danger{background:var(--red-lt);color:var(--red);border:1px solid #f5c0c0;}
-.pbtn.sm{padding:8px;font-size:12.5px;margin-top:7px;}
-.pbtn.xs{padding:6px 10px;font-size:11.5px;margin-top:5px;width:auto;}
+  /* PAGES */
+  .page { display:none; padding:16px; }
+  .page.active { display:block; }
 
-/* CHOICE BUTTONS */
-.choice-row{display:flex;gap:5px;flex-wrap:wrap;}
-.cbtn{padding:7px 11px;font-size:12px;border:1px solid var(--border);border-radius:8px;background:#f8f9fb;color:var(--text2);cursor:pointer;font-family:inherit;white-space:nowrap;}
-.cbtn.on{background:var(--blue-lt);color:var(--blue);border-color:#a8c8ee;}
-.cbtn.green.on{background:var(--green-lt);color:var(--green);border-color:#a8d890;}
-.cbtn.red.on{background:var(--red-lt);color:var(--red);border-color:#f5a0a0;}
-.cbtn.purple.on{background:var(--purple-lt);color:var(--purple);border-color:#c0a8ee;}
+  /* CARDS */
+  .card {
+    background:var(--surface); border-radius:var(--radius);
+    border:1px solid var(--border); padding:16px; margin-bottom:12px;
+    box-shadow:var(--shadow);
+  }
+  .card-title {
+    font-family:'Syne',sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:1.2px; text-transform:uppercase; color:var(--text3);
+    margin-bottom:12px;
+  }
 
-/* MOOD SLIDER */
-.mood-row{display:flex;gap:6px;justify-content:space-between;}
-.mood-btn{flex:1;padding:8px 4px;font-size:13px;border:1px solid var(--border);border-radius:10px;background:#f8f9fb;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;font-family:inherit;}
-.mood-btn span.ml{font-size:10px;color:var(--text2);}
-.mood-btn.on{border-color:var(--blue);background:var(--blue-lt);}
-.mood-btn.on span.ml{color:var(--blue);}
+  /* STATS ROW */
+  .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px; }
+  .stat-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; padding:12px; text-align:center; box-shadow:var(--shadow);
+  }
+  .stat-num { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; color:var(--accent); }
+  .stat-label { font-size:11px; color:var(--text3); margin-top:2px; }
 
-/* RATING STARS */
-.star-row{display:flex;gap:4px;}
-.star{font-size:22px;cursor:pointer;opacity:.3;transition:opacity .15s;}
-.star.on{opacity:1;}
+  /* AI CHATBOT */
+  .chat-container {
+    background:var(--surface); border-radius:var(--radius);
+    border:1px solid var(--border); overflow:hidden; margin-bottom:12px;
+    box-shadow:var(--shadow);
+  }
+  .chat-header {
+    padding:12px 16px; background:linear-gradient(135deg,#2563EB,#7C3AED);
+    display:flex; align-items:center; gap:10px;
+  }
+  .chat-header-text { color:white; }
+  .chat-header-text h3 { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; }
+  .chat-header-text p { font-size:11px; opacity:0.8; margin-top:1px; }
+  .ai-dot { width:8px; height:8px; border-radius:50%; background:#4ADE80; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
-/* CHECKLIST */
-.cl-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
-.cl-item:last-child{border-bottom:none;}
-.cl-check{width:20px;height:20px;border-radius:6px;border:2px solid var(--border);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;background:#fff;}
-.cl-check.done{background:var(--green);border-color:var(--green);color:#fff;}
-.cl-label{font-size:13px;flex:1;}
-.cl-label.done{text-decoration:line-through;color:var(--text2);}
+  .chat-messages {
+    height:300px; overflow-y:auto; padding:12px;
+    display:flex; flex-direction:column; gap:10px;
+    background: #FAFAF8;
+  }
+  .msg { display:flex; gap:8px; align-items:flex-start; }
+  .msg.user { flex-direction:row-reverse; }
+  .msg-avatar {
+    width:28px; height:28px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700; font-family:'Syne',sans-serif;
+  }
+  .msg.ai .msg-avatar { background:linear-gradient(135deg,#2563EB,#7C3AED); color:white; font-size:11px; }
+  .msg.user .msg-avatar { background:var(--accent); color:white; font-size:12px; }
+  .msg-bubble {
+    max-width:80%; padding:10px 13px; border-radius:14px;
+    font-size:13.5px; line-height:1.5;
+  }
+  .msg.ai .msg-bubble { background:var(--surface); border:1px solid var(--border); color:var(--text); border-radius:4px 14px 14px 14px; }
+  .msg.user .msg-bubble { background:var(--accent); color:white; border-radius:14px 4px 14px 14px; }
+  .msg-time { font-size:10px; color:var(--text3); margin-top:3px; }
 
-/* LIST ITEMS */
-.li{display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);}
-.li:last-child{border-bottom:none;}
-.ldot{width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:4px;flex-shrink:0;}
-.ldot.g{background:var(--green);}
-.ldot.a{background:var(--amber);}
-.ldot.r{background:var(--red);}
-.lm{font-size:11px;color:var(--text2);}
-.lt{font-size:13px;margin-top:1px;}
+  .chat-input-row {
+    padding:10px 12px; border-top:1px solid var(--border);
+    display:flex; gap:8px; background:var(--surface);
+  }
+  .chat-input {
+    flex:1; border:1.5px solid var(--border); border-radius:24px;
+    padding:9px 14px; font-size:14px; font-family:'DM Sans',sans-serif;
+    background:var(--bg); outline:none; color:var(--text);
+    transition:border-color 0.2s;
+  }
+  .chat-input:focus { border-color:var(--accent); }
+  .send-btn {
+    width:38px; height:38px; border-radius:50%; background:var(--accent);
+    border:none; cursor:pointer; color:white; font-size:16px;
+    display:flex; align-items:center; justify-content:center;
+    transition:all 0.2s; flex-shrink:0;
+  }
+  .send-btn:hover { background:var(--accent2); transform:scale(1.05); }
+  .send-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
 
-/* REMINDERS */
-.ri{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);}
-.ri:last-child{border-bottom:none;}
-.rt{font-size:12px;font-weight:600;color:var(--blue);min-width:42px;}
-.rl{font-size:13px;flex:1;}
-.rdel{font-size:18px;color:var(--text2);cursor:pointer;padding:2px 6px;background:none;border:none;font-family:inherit;}
-.rtag{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500;}
-.tn{background:#fdf0d5;color:#8a4f00;}
-.tf{background:var(--green-lt);color:var(--green);}
-.ta{background:var(--blue-lt);color:var(--blue-dk);}
-.tg{background:#f0eeff;color:#4a3ab5;}
-.tp{background:var(--red-lt);color:#a0241b;}
+  /* TYPING INDICATOR */
+  .typing-indicator { display:flex; gap:4px; padding:8px 12px; }
+  .typing-dot { width:7px; height:7px; border-radius:50%; background:var(--text3); animation:typing 1.4s infinite; }
+  .typing-dot:nth-child(2) { animation-delay:0.2s; }
+  .typing-dot:nth-child(3) { animation-delay:0.4s; }
+  @keyframes typing { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
 
-/* GOALS */
-.gi{display:flex;align-items:flex-start;gap:9px;padding:10px 0;border-bottom:1px solid var(--border);}
-.gi:last-child{border-bottom:none;}
-.ginfo{flex:1;}
-.gname{font-size:13px;font-weight:500;}
-.gsub{font-size:11px;color:var(--text2);margin-top:1px;}
-.gpct{font-size:13px;font-weight:600;color:var(--blue);min-width:34px;text-align:right;}
-.pbar{height:4px;background:#eef0f3;border-radius:2px;margin-top:6px;}
-.pfill{height:4px;border-radius:2px;background:var(--blue);}
-.pfill.g{background:var(--green);}
-.pfill.a{background:var(--amber);}
-.gdel{font-size:16px;cursor:pointer;color:var(--text2);background:none;border:none;padding:2px 4px;font-family:inherit;flex-shrink:0;margin-top:2px;}
+  /* CHECKIN FORM */
+  .form-group { margin-bottom:14px; }
+  .form-label { font-size:12px; font-weight:600; color:var(--text2); margin-bottom:6px; display:block; letter-spacing:0.3px; }
+  .form-input, .form-select, .form-textarea {
+    width:100%; padding:11px 13px; border:1.5px solid var(--border);
+    border-radius:12px; font-size:14px; font-family:'DM Sans',sans-serif;
+    background:var(--bg); color:var(--text); outline:none;
+    transition:border-color 0.2s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--accent); background:white; }
+  .form-textarea { resize:vertical; min-height:80px; line-height:1.5; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 
-/* EXAM */
-.ecard{background:#f8f9fb;border-radius:10px;padding:10px;}
-.ename{font-size:12px;font-weight:600;}
-.ecnt{font-size:28px;font-weight:600;color:var(--blue);}
-.edlbl{font-size:10px;color:var(--text2);}
-.srow{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);}
-.srow:last-child{border-bottom:none;}
-.sstatus{font-size:10.5px;padding:2px 8px;border-radius:10px;font-weight:500;cursor:pointer;}
-.sdone{background:var(--green-lt);color:var(--green);}
-.sprog{background:var(--amber-lt);color:var(--amber);}
-.stodo{background:#f8f9fb;color:var(--text2);}
+  /* RATING BUTTONS */
+  .rating-group { display:flex; gap:6px; flex-wrap:wrap; }
+  .rating-btn {
+    padding:7px 14px; border-radius:20px; border:1.5px solid var(--border);
+    background:var(--surface); cursor:pointer; font-size:13px; font-weight:500;
+    transition:all 0.15s; font-family:'DM Sans',sans-serif; color:var(--text);
+  }
+  .rating-btn.active { background:var(--accent); color:white; border-color:var(--accent); }
+  .rating-btn.active.green { background:var(--green); border-color:var(--green); }
+  .rating-btn.active.orange { background:var(--orange); border-color:var(--orange); }
+  .rating-btn.active.red { background:var(--red); border-color:var(--red); }
 
-/* FITNESS */
-.wgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;}
-.wtile{background:#f8f9fb;border-radius:10px;padding:11px;text-align:center;}
-.wv{font-size:22px;font-weight:600;}
-.wl{font-size:10.5px;color:var(--text2);margin-top:1px;}
-.barrow{display:flex;align-items:flex-end;gap:4px;height:50px;margin:10px 0 3px;}
-.wbar{flex:1;border-radius:3px;background:#c5d8f5;}
-.wbar.td{background:var(--blue);}
-.dayrow{display:flex;gap:4px;}
-.wd{flex:1;text-align:center;font-size:10px;color:var(--text2);}
+  /* STAR RATING */
+  .star-row { display:flex; gap:4px; }
+  .star { font-size:24px; cursor:pointer; transition:transform 0.1s; filter:grayscale(1); }
+  .star.active { filter:none; transform:scale(1.1); }
 
-/* PLATFORMS */
-.plat-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);}
-.plat-item:last-child{border-bottom:none;}
-.plat-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
-.plat-info{flex:1;}
-.plat-name{font-size:13px;font-weight:500;}
-.plat-last{font-size:11px;color:var(--text2);margin-top:1px;}
-.plat-btn{font-size:11px;padding:5px 11px;border:1px solid var(--border);border-radius:8px;background:#f8f9fb;cursor:pointer;font-family:inherit;}
-.plat-btn.due{background:var(--amber-lt);color:var(--amber);border-color:#e0c070;}
-.plat-btn.done{background:var(--green-lt);color:var(--green);border-color:#a8d890;}
+  /* HABITS GRID */
+  .habits-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .habit-item {
+    display:flex; align-items:center; gap:8px; padding:10px 12px;
+    border:1.5px solid var(--border); border-radius:10px; cursor:pointer;
+    transition:all 0.15s; background:var(--surface);
+  }
+  .habit-item.checked { border-color:var(--green); background:#F0FDF4; }
+  .habit-check { width:18px; height:18px; border-radius:5px; border:2px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:11px; }
+  .habit-item.checked .habit-check { background:var(--green); border-color:var(--green); color:white; }
+  .habit-label { font-size:13px; color:var(--text); }
 
-/* REPORTS */
-.rtabs{display:flex;gap:6px;margin-bottom:11px;}
-.rtab{flex:1;padding:7px;font-size:12px;font-weight:500;border:1px solid var(--border);border-radius:9px;background:#f8f9fb;color:var(--text2);cursor:pointer;text-align:center;font-family:inherit;}
-.rtab.on{background:var(--blue-lt);color:var(--blue);border-color:#a8c8ee;}
-.rsec{display:none;}
-.rsec.on{display:block;}
-.rlog-item{padding:11px;background:#f8f9fb;border-radius:10px;margin-bottom:7px;cursor:pointer;}
-.rlog-date{font-size:11px;font-weight:600;color:var(--blue);}
-.rlog-preview{font-size:12.5px;color:#333;margin-top:3px;line-height:1.4;}
-.rlog-tags{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
-.xtag{font-size:10px;padding:2px 7px;border-radius:8px;background:#eef0f3;color:var(--text2);}
-.rlog-expanded{font-size:12px;color:var(--text2);margin-top:6px;line-height:1.6;display:none;border-top:1px solid var(--border);padding-top:8px;}
-.search-wrap{position:relative;margin-bottom:10px;}
-.search-wrap input{padding-left:32px;}
-.search-ico{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--text2);pointer-events:none;}
+  /* MULTI SELECT */
+  .multi-select { display:flex; flex-wrap:wrap; gap:6px; }
+  .multi-chip {
+    padding:6px 12px; border-radius:20px; border:1.5px solid var(--border);
+    background:var(--surface); cursor:pointer; font-size:12px; font-weight:500;
+    transition:all 0.15s; font-family:'DM Sans',sans-serif; color:var(--text2);
+  }
+  .multi-chip.selected { background:var(--accent); color:white; border-color:var(--accent); }
 
-/* AI BOX */
-.ai-box{background:linear-gradient(135deg,#eef5fd,#f3f0ff);border:1px solid #c5d3f0;border-radius:12px;padding:13px;margin-bottom:10px;}
-.ai-box.green{background:linear-gradient(135deg,#eaf5e8,#f0ffe8);border-color:#b5d8a8;}
-.ai-lbl{font-size:10px;font-weight:600;color:var(--blue-dk);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px;display:flex;align-items:center;gap:5px;}
-.ai-box.green .ai-lbl{color:#1a5010;}
-.ai-box p{font-size:13px;color:#222;line-height:1.6;}
-.ai-loading{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text2);padding:8px 0;}
-.dot-pulse span{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);animation:pulse 1.2s infinite;}
-.dot-pulse span:nth-child(2){animation-delay:.2s;}
-.dot-pulse span:nth-child(3){animation-delay:.4s;}
-@keyframes pulse{0%,80%,100%{opacity:.2;}40%{opacity:1;}}
+  /* BUTTONS */
+  .btn {
+    width:100%; padding:14px; border-radius:12px; border:none;
+    font-size:15px; font-weight:600; cursor:pointer; transition:all 0.2s;
+    font-family:'Syne',sans-serif; letter-spacing:0.3px;
+  }
+  .btn-primary { background:var(--accent); color:white; }
+  .btn-primary:hover { background:var(--accent2); transform:translateY(-1px); box-shadow:0 4px 16px rgba(37,99,235,0.3); }
+  .btn-secondary { background:var(--surface2); color:var(--text); border:1px solid var(--border); }
+  .btn-danger { background:#FEF2F2; color:var(--red); border:1px solid #FECACA; }
+  .btn-sm { padding:8px 14px; font-size:13px; width:auto; border-radius:8px; }
 
-/* UPSKILL SECTION */
-.upskill-item{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
-.upskill-item:last-child{border-bottom:none;}
-.up-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.up-title{font-size:13px;font-weight:500;}
-.up-desc{font-size:12px;color:var(--text2);margin-top:2px;line-height:1.4;}
-.up-action{font-size:11px;color:var(--blue);margin-top:4px;font-weight:500;}
+  /* LOG ITEMS */
+  .log-item {
+    padding:12px; border-radius:12px; border:1px solid var(--border);
+    background:var(--surface); margin-bottom:8px; cursor:pointer;
+    transition:all 0.15s;
+  }
+  .log-item:hover { border-color:var(--accent); }
+  .log-item-header { display:flex; align-items:center; justify-content:space-between; }
+  .log-dot { width:8px; height:8px; border-radius:50%; margin-right:8px; flex-shrink:0; }
+  .log-date { font-size:12px; font-weight:600; color:var(--text2); }
+  .log-summary { font-size:13px; color:var(--text3); margin-top:4px; }
+  .log-detail { display:none; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); font-size:13px; color:var(--text2); line-height:1.7; }
+  .log-item.open .log-detail { display:block; }
 
-/* NOTIF */
-.notif-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:50;}
-.notif-overlay.open{display:block;}
-.notif-panel{position:fixed;top:0;right:0;width:min(320px,92vw);height:100vh;background:#fff;z-index:51;padding:16px;overflow-y:auto;box-shadow:-2px 0 24px rgba(0,0,0,0.12);}
-.np-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
-.np-title{font-size:15px;font-weight:600;}
-.np-close{font-size:20px;cursor:pointer;color:var(--text2);background:none;border:none;font-family:inherit;}
-.nitem{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);}
-.nitem:last-child{border-bottom:none;}
-.nicon{font-size:18px;flex-shrink:0;}
-.nmsg{font-size:12.5px;line-height:1.4;}
-.ntime{font-size:10.5px;color:var(--text2);margin-top:2px;}
+  /* GOAL CARDS */
+  .goal-card {
+    padding:14px; border-radius:12px; border:1px solid var(--border);
+    background:var(--surface); margin-bottom:8px; box-shadow:var(--shadow);
+  }
+  .goal-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:8px; }
+  .goal-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; }
+  .goal-category { font-size:11px; padding:3px 8px; border-radius:10px; background:var(--surface2); color:var(--text2); }
+  .progress-bar { height:6px; background:var(--surface2); border-radius:3px; overflow:hidden; margin:8px 0; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--purple)); border-radius:3px; transition:width 0.5s; }
+  .goal-meta { display:flex; justify-content:space-between; font-size:12px; color:var(--text3); }
 
-/* SETTINGS */
-.user-row{display:flex;align-items:center;gap:10px;}
-.user-avatar{width:44px;height:44px;border-radius:50%;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:var(--blue);flex-shrink:0;overflow:hidden;}
-.user-avatar img{width:100%;height:100%;object-fit:cover;}
+  /* ROADMAP */
+  .roadmap-item {
+    display:flex; gap:12px; padding:12px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .roadmap-item:last-child { border-bottom:none; }
+  .roadmap-num {
+    width:28px; height:28px; border-radius:50%; background:var(--accent);
+    color:white; display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:700; flex-shrink:0; font-family:'Syne',sans-serif;
+  }
+  .roadmap-num.done { background:var(--green); }
+  .roadmap-num.pending { background:var(--surface2); color:var(--text3); }
+  .roadmap-content { flex:1; }
+  .roadmap-title { font-weight:600; font-size:14px; }
+  .roadmap-desc { font-size:12px; color:var(--text3); margin-top:2px; line-height:1.5; }
 
-/* MISC */
-#loading-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:12px;}
-.toast{position:fixed;bottom:96px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;max-width:88vw;}
-.toast.show{opacity:1;}
-.bottom-nav{display:flex;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#fff;border-top:1px solid var(--border);z-index:15;padding:6px 0 max(6px,env(safe-area-inset-bottom));}
-.bnb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 2px;cursor:pointer;border:none;background:none;font-family:inherit;}
-.bnb-icon{font-size:20px;}
-.bnb-lbl{font-size:9.5px;color:var(--text2);font-weight:500;}
-.bnb.on .bnb-lbl{color:var(--blue);}
-.divider{height:1px;background:var(--border);margin:10px 0;}
-.section-note{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:10px;padding:8px 10px;background:#f8f9fb;border-radius:8px;}
+  /* REMINDER ITEM */
+  .reminder-item {
+    display:flex; align-items:center; gap:12px; padding:12px;
+    border-radius:12px; border:1px solid var(--border); background:var(--surface);
+    margin-bottom:8px;
+  }
+  .reminder-time { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:var(--accent); min-width:52px; }
+  .reminder-info { flex:1; }
+  .reminder-title { font-size:14px; font-weight:500; }
+  .reminder-tag { font-size:11px; color:var(--text3); margin-top:2px; }
+  .reminder-delete { background:none; border:none; cursor:pointer; color:var(--text3); font-size:18px; padding:4px; }
+
+  /* PLATFORM */
+  .platform-item {
+    display:flex; align-items:center; gap:12px; padding:12px;
+    border-radius:12px; border:1px solid var(--border); background:var(--surface); margin-bottom:8px;
+  }
+  .platform-icon { font-size:24px; }
+  .platform-info { flex:1; }
+  .platform-name { font-weight:600; font-size:14px; }
+  .platform-last { font-size:12px; color:var(--text3); margin-top:2px; }
+  .platform-check-btn {
+    padding:6px 14px; border-radius:20px; border:1.5px solid var(--border);
+    background:var(--surface2); cursor:pointer; font-size:12px; font-weight:600;
+    font-family:'DM Sans',sans-serif; transition:all 0.2s; color:var(--text);
+  }
+  .platform-check-btn.done { background:#F0FDF4; border-color:var(--green); color:var(--green); }
+
+  /* COUNTDOWN CARDS */
+  .countdown-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .countdown-card {
+    padding:14px; border-radius:12px; text-align:center;
+    background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow);
+  }
+  .countdown-label { font-size:11px; color:var(--text3); margin-bottom:4px; font-weight:500; }
+  .countdown-num { font-family:'Syne',sans-serif; font-size:32px; font-weight:800; color:var(--accent); }
+  .countdown-sub { font-size:11px; color:var(--text3); margin-top:2px; }
+
+  /* NAV */
+  .bottom-nav {
+    position:fixed; bottom:0; left:0; right:0;
+    background:var(--surface); border-top:1px solid var(--border);
+    display:flex; z-index:100; padding-bottom:env(safe-area-inset-bottom);
+  }
+  .nav-btn {
+    flex:1; padding:10px 4px; border:none; background:none; cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    color:var(--text3); font-size:9px; font-weight:600; letter-spacing:0.5px;
+    transition:color 0.2s; font-family:'DM Sans',sans-serif;
+  }
+  .nav-btn .nav-icon { font-size:20px; transition:transform 0.2s; }
+  .nav-btn.active { color:var(--accent); }
+  .nav-btn.active .nav-icon { transform:scale(1.1); }
+
+  /* SEARCH */
+  .search-bar {
+    width:100%; padding:11px 16px 11px 40px; border:1.5px solid var(--border);
+    border-radius:12px; font-size:14px; background:var(--surface);
+    font-family:'DM Sans',sans-serif; outline:none; color:var(--text);
+    transition:border-color 0.2s;
+  }
+  .search-bar:focus { border-color:var(--accent); }
+  .search-wrap { position:relative; margin-bottom:12px; }
+  .search-icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text3); font-size:16px; }
+
+  /* SECTION DIVIDER */
+  .section-title {
+    font-family:'Syne',sans-serif; font-size:18px; font-weight:800;
+    margin-bottom:12px; color:var(--text);
+  }
+  .section-sub { font-size:13px; color:var(--text3); margin-top:-8px; margin-bottom:12px; }
+
+  /* BADGE */
+  .badge {
+    display:inline-block; padding:3px 9px; border-radius:20px;
+    font-size:11px; font-weight:600;
+  }
+  .badge-blue { background:#EFF6FF; color:var(--accent); }
+  .badge-green { background:#F0FDF4; color:var(--green); }
+  .badge-orange { background:#FFF7ED; color:var(--orange); }
+  .badge-red { background:#FEF2F2; color:var(--red); }
+  .badge-purple { background:#F5F3FF; color:var(--purple); }
+
+  /* MODAL */
+  .modal-overlay {
+    display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5);
+    z-index:200; align-items:flex-end; justify-content:center;
+  }
+  .modal-overlay.open { display:flex; }
+  .modal {
+    background:var(--surface); border-radius:20px 20px 0 0;
+    padding:20px 16px; width:100%; max-height:85vh; overflow-y:auto;
+    animation:slideUp 0.3s ease;
+  }
+  @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+  .modal-handle { width:36px; height:4px; background:var(--border); border-radius:2px; margin:0 auto 16px; }
+  .modal-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; margin-bottom:16px; }
+
+  /* AI SUGGESTION CARD */
+  .ai-suggestion {
+    background:linear-gradient(135deg,#EFF6FF,#F5F3FF);
+    border:1px solid #BFDBFE; border-radius:var(--radius); padding:16px;
+    margin-bottom:12px; position:relative; overflow:hidden;
+  }
+  .ai-suggestion::before {
+    content:''; position:absolute; top:-20px; right:-20px;
+    width:80px; height:80px; border-radius:50%;
+    background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(124,58,237,0.1));
+  }
+  .ai-suggestion-label { font-size:10px; font-weight:700; letter-spacing:1px; color:var(--accent); text-transform:uppercase; margin-bottom:6px; }
+  .ai-suggestion-text { font-size:14px; line-height:1.6; color:var(--text); }
+  .ai-loading { display:flex; gap:4px; align-items:center; padding:4px 0; }
+
+  /* EMOTION PICKER */
+  .emotion-row { display:flex; gap:8px; justify-content:space-between; }
+  .emotion-btn { font-size:26px; cursor:pointer; transition:transform 0.2s; opacity:0.5; }
+  .emotion-btn.selected { opacity:1; transform:scale(1.3); }
+
+  /* DIVIDER */
+  .divider { height:1px; background:var(--border); margin:12px 0; }
+
+  /* EMPTY STATE */
+  .empty-state { text-align:center; padding:32px 16px; color:var(--text3); }
+  .empty-state .empty-icon { font-size:40px; margin-bottom:8px; }
+  .empty-state p { font-size:14px; }
+
+  /* SCROLL TO TOP */
+  ::-webkit-scrollbar { width:4px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+
+  /* TOAST */
+  .toast {
+    position:fixed; bottom:90px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--text); color:white; padding:10px 20px; border-radius:24px;
+    font-size:13px; font-weight:500; z-index:300; opacity:0;
+    transition:all 0.3s; pointer-events:none; white-space:nowrap;
+  }
+  .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+  /* REPORT SECTION */
+  .report-period-btn {
+    padding:8px 18px; border-radius:20px; border:1.5px solid var(--border);
+    background:var(--surface2); cursor:pointer; font-size:13px; font-weight:600;
+    font-family:'Syne',sans-serif; transition:all 0.2s; color:var(--text2);
+  }
+  .report-period-btn.active { background:var(--accent); color:white; border-color:var(--accent); }
+
+  .ai-chip {
+    display:inline-flex; align-items:center; gap:5px;
+    background:linear-gradient(135deg,var(--accent),var(--purple));
+    color:white; padding:4px 10px; border-radius:20px;
+    font-size:11px; font-weight:600; margin-bottom:8px;
+  }
 </style>
 </head>
 <body>
 
-<div id="loading-screen">
-  <div style="font-size:48px">🚀</div>
-  <div style="font-size:14px;color:var(--text2)">Loading Aryash Hub...</div>
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">Aryash <span>Hub</span></div>
+      <div class="header-meta" id="headerDate"></div>
+    </div>
+    <div class="header-actions">
+      <div class="streak-badge" id="streakBadge">🔥 0 days</div>
+      <button class="icon-btn" onclick="openNotifModal()">🔔</button>
+    </div>
+  </div>
+  <div class="tabs" id="mainTabs">
+    <button class="tab active" onclick="showPage('home',this)">Home</button>
+    <button class="tab" onclick="showPage('checkin',this)">Check-in</button>
+    <button class="tab" onclick="showPage('ai',this)">AI Coach</button>
+    <button class="tab" onclick="showPage('goals',this)">Goals</button>
+    <button class="tab" onclick="showPage('roadmap',this)">Roadmap</button>
+    <button class="tab" onclick="showPage('platforms',this)">Platforms</button>
+    <button class="tab" onclick="showPage('fitness',this)">Fitness</button>
+    <button class="tab" onclick="showPage('reports',this)">Reports</button>
+  </div>
 </div>
 
-<div id="auth-screen" style="display:none">
-  <div class="auth-logo">🎯</div>
-  <div class="auth-title">Aryash Hub</div>
-  <div class="auth-sub">Your personal life OS — NDA, cybersecurity, fitness, goals, habits. Everything in one place, synced forever.</div>
-  <button class="google-btn" onclick="signInGoogle()">
-    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="G">
-    Continue with Google
-  </button>
-  <div class="auth-note">Private to your account. Free forever.</div>
+<!-- ==================== HOME ==================== -->
+<div class="page active" id="page-home">
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" id="statCheckins">0</div>
+      <div class="stat-label">Check-ins</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statGoals">0</div>
+      <div class="stat-label">Goals</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statStreak">0</div>
+      <div class="stat-label">Streak</div>
+    </div>
+  </div>
+
+  <div class="ai-suggestion" id="homeSuggestion">
+    <div class="ai-suggestion-label">✨ AI Suggestion for Today</div>
+    <div class="ai-suggestion-text" id="homeSuggestionText">
+      <div class="ai-loading">
+        <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+        <span style="font-size:13px;color:var(--text3);margin-left:4px">Generating your personalized suggestion...</span>
+      </div>
+    </div>
+    <button class="btn btn-secondary btn-sm" style="margin-top:10px" onclick="loadHomeSuggestion()">↺ Refresh</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📅 Countdowns</div>
+    <div class="countdown-grid">
+      <div class="countdown-card">
+        <div class="countdown-label">NDA April</div>
+        <div class="countdown-num" id="cdNDA">--</div>
+        <div class="countdown-sub">days left</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-label">Midsems</div>
+        <div class="countdown-num" id="cdMid">--</div>
+        <div class="countdown-sub">days left</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-label">Endsems</div>
+        <div class="countdown-num" id="cdEnd">--</div>
+        <div class="countdown-sub">days left</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-label">NDA Sept</div>
+        <div class="countdown-num" id="cdNDA2">--</div>
+        <div class="countdown-sub">days left</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ Quick Actions</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <button class="btn btn-primary" onclick="showPage('checkin',document.querySelectorAll('.tab')[1])">📝 Daily Check-in</button>
+      <button class="btn btn-secondary" onclick="showPage('ai',document.querySelectorAll('.tab')[2])">🤖 Ask AI</button>
+      <button class="btn btn-secondary" onclick="showPage('goals',document.querySelectorAll('.tab')[3])">🎯 Goals</button>
+      <button class="btn btn-secondary" onclick="showPage('roadmap',document.querySelectorAll('.tab')[4])">🗺 Roadmap</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 Today's Platforms</div>
+    <div id="homePlatforms"></div>
+  </div>
 </div>
 
-<div class="app" id="main-app" style="display:none">
-  <div class="topbar">
-    <div class="topbar-row">
-      <div><div class="app-name">Aryash Hub</div><div class="app-date" id="dateStr"></div></div>
-      <div class="top-right">
-        <div class="streak-pill">🔥 <span id="streakBadge">1</span> days</div>
-        <div class="icon-btn" onclick="toggleNotifs()">🔔<div class="notif-dot" id="ndot"></div></div>
-        <div class="icon-btn" onclick="go('settings')">⚙️</div>
+<!-- ==================== CHECK-IN ==================== -->
+<div class="page" id="page-checkin">
+  <div class="section-title">Daily Life Log</div>
+  <div class="section-sub">Record everything — your data trains your AI coach</div>
+
+  <div class="card">
+    <div class="card-title">😴 Sleep</div>
+    <div class="form-row">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Slept at</label>
+        <input type="time" class="form-input" id="ci-sleep-in">
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Woke up</label>
+        <input type="time" class="form-input" id="ci-sleep-out">
       </div>
     </div>
-    <div class="sync-bar" id="syncBar"></div>
-  </div>
-
-  <div class="nav">
-    <button class="nb on" onclick="go('home')">Home</button>
-    <button class="nb" onclick="go('checkin')">Check-in</button>
-    <button class="nb" onclick="go('platforms')">Platforms</button>
-    <button class="nb" onclick="go('goals')">Goals</button>
-    <button class="nb" onclick="go('upskill')">Upskill</button>
-    <button class="nb" onclick="go('reminders')">Reminders</button>
-    <button class="nb" onclick="go('exams')">Exams</button>
-    <button class="nb" onclick="go('fitness')">Fitness</button>
-    <button class="nb" onclick="go('reports')">Reports</button>
-    <button class="nb" onclick="go('settings')">Settings</button>
-  </div>
-
-  <!-- ══ HOME ══ -->
-  <div class="sec on" id="tab-home">
-    <div class="stat3">
-      <div class="stile"><div class="sv" id="h-ci">0</div><div class="sl">Check-ins</div></div>
-      <div class="stile"><div class="sv" id="h-gl">0</div><div class="sl">Goals</div></div>
-      <div class="stile"><div class="sv" id="h-st">1</div><div class="sl">Streak</div></div>
-    </div>
-
-    <div class="card">
-      <div class="ct">🤖 AI suggestion for today</div>
-      <div id="ai-home"><div class="ai-loading"><div class="dot-pulse"><span></span><span></span><span></span></div><span>Thinking based on your data...</span></div></div>
-      <button class="pbtn ghost sm" onclick="fetchAI('home')">↻ Refresh</button>
-    </div>
-
-    <div class="card">
-      <div class="ct">Countdowns</div>
-      <div class="stat2">
-        <div class="ecard"><div class="ename">NDA April</div><div class="ecnt" id="nda-h">4</div><div class="edlbl">days · practice</div></div>
-        <div class="ecard"><div class="ename">Midsems</div><div class="ecnt" id="mid-h">13</div><div class="edlbl">days left</div></div>
+    <div class="form-group" style="margin-top:10px">
+      <label class="form-label">Sleep Quality</label>
+      <div class="rating-group" id="sleepQuality">
+        <button class="rating-btn" onclick="setRating('sleepQuality','Bad',this)">😫 Bad</button>
+        <button class="rating-btn" onclick="setRating('sleepQuality','Okay',this)">😐 Okay</button>
+        <button class="rating-btn" onclick="setRating('sleepQuality','Good',this)">😊 Good</button>
+        <button class="rating-btn" onclick="setRating('sleepQuality','Great',this)">🌟 Great</button>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="ct">Today's reminders</div>
-      <div id="home-rems"></div>
-    </div>
-
-    <div class="card">
-      <div class="ct">Platforms due today</div>
-      <div id="home-plats"></div>
     </div>
   </div>
 
-  <!-- ══ CHECK-IN ══ -->
-  <div class="sec" id="tab-checkin">
-    <div class="section-note">📝 Log everything about your day — mood, body, mind, study, wins, struggles. AI reads this to give you better suggestions.</div>
-
-    <div class="card">
-      <div class="ct">🌙 Sleep</div>
-      <label class="fl">Slept at → Woke up</label>
-      <div class="row2"><input type="time" id="ci-si"><input type="time" id="ci-so"></div>
-      <label class="fl">Sleep quality</label>
-      <div class="choice-row">
-        <div class="cbtn red" onclick="pick(this,'sq','Poor')">😴 Poor</div>
-        <div class="cbtn" onclick="pick(this,'sq','Okay')">😐 Okay</div>
-        <div class="cbtn green" onclick="pick(this,'sq','Good')">😊 Good</div>
-        <div class="cbtn green" onclick="pick(this,'sq','Great')">🌟 Great</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="ct">💪 Workout & body</div>
-      <label class="fl">Workout done</label>
-      <div class="choice-row">
-        <div class="cbtn green" onclick="pick(this,'wo','Gym + Run')">Gym + Run</div>
-        <div class="cbtn green" onclick="pick(this,'wo','Gym only')">Gym only</div>
-        <div class="cbtn green" onclick="pick(this,'wo','Run only')">Run only</div>
-        <div class="cbtn" onclick="pick(this,'wo','Rest day')">Rest day</div>
-        <div class="cbtn red" onclick="pick(this,'wo','Skipped')">Skipped</div>
-      </div>
-      <label class="fl">Workout notes (distance, sets, etc.)</label>
-      <input type="text" id="ci-wn" placeholder="e.g. 3km run in 22 min, chest day at gym">
-      <label class="fl">Body feeling</label>
-      <div class="choice-row">
-        <div class="cbtn red" onclick="pick(this,'body','Sick')">🤒 Sick</div>
-        <div class="cbtn red" onclick="pick(this,'body','Tired')">😩 Tired</div>
-        <div class="cbtn" onclick="pick(this,'body','Normal')">😐 Normal</div>
-        <div class="cbtn green" onclick="pick(this,'body','Good')">💪 Good</div>
-        <div class="cbtn green" onclick="pick(this,'body','Energetic')">⚡ Energetic</div>
-      </div>
-      <label class="fl">Diet today</label>
-      <div class="choice-row">
-        <div class="cbtn red" onclick="pick(this,'diet','Junk')">🍔 Junk</div>
-        <div class="cbtn" onclick="pick(this,'diet','Mixed')">🍱 Mixed</div>
-        <div class="cbtn green" onclick="pick(this,'diet','Healthy')">🥗 Healthy</div>
-      </div>
-      <label class="fl">Water intake</label>
-      <div class="choice-row">
-        <div class="cbtn red" onclick="pick(this,'water','Low')">💧 Low</div>
-        <div class="cbtn" onclick="pick(this,'water','Medium')">💧💧 Medium</div>
-        <div class="cbtn green" onclick="pick(this,'water','High')">💧💧💧 High</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="ct">🧠 Mind & mood</div>
-      <label class="fl">Overall mood</label>
-      <div class="mood-row">
-        <div class="mood-btn" onclick="pickMood(this,'1')"><span>😞</span><span class="ml">Bad</span></div>
-        <div class="mood-btn" onclick="pickMood(this,'2')"><span>😕</span><span class="ml">Meh</span></div>
-        <div class="mood-btn" onclick="pickMood(this,'3')"><span>😐</span><span class="ml">Okay</span></div>
-        <div class="mood-btn" onclick="pickMood(this,'4')"><span>😊</span><span class="ml">Good</span></div>
-        <div class="mood-btn" onclick="pickMood(this,'5')"><span>🤩</span><span class="ml">Great</span></div>
-      </div>
-      <label class="fl">Energy level</label>
-      <div class="choice-row">
-        <div class="cbtn red" onclick="pick(this,'energy','Low')">Low</div>
-        <div class="cbtn" onclick="pick(this,'energy','Okay')">Okay</div>
-        <div class="cbtn green" onclick="pick(this,'energy','Good')">Good</div>
-        <div class="cbtn green" onclick="pick(this,'energy','High')">High</div>
-      </div>
-      <label class="fl">Stress level</label>
-      <div class="choice-row">
-        <div class="cbtn green" onclick="pick(this,'stress','None')">😌 None</div>
-        <div class="cbtn" onclick="pick(this,'stress','Low')">🙂 Low</div>
-        <div class="cbtn" onclick="pick(this,'stress','Medium')">😬 Medium</div>
-        <div class="cbtn red" onclick="pick(this,'stress','High')">😤 High</div>
-      </div>
-      <label class="fl">Focus quality today</label>
-      <div class="star-row" id="focus-stars">
-        <span class="star" onclick="setStars('focus',1)">⭐</span>
-        <span class="star" onclick="setStars('focus',2)">⭐</span>
-        <span class="star" onclick="setStars('focus',3)">⭐</span>
-        <span class="star" onclick="setStars('focus',4)">⭐</span>
-        <span class="star" onclick="setStars('focus',5)">⭐</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="ct">📚 Study & learning</div>
-      <label class="fl">What did you study?</label>
-      <div class="choice-row" id="study-row">
-        <div class="cbtn purple" onclick="pickMulti(this,'study','NDA Maths')">NDA Maths</div>
-        <div class="cbtn purple" onclick="pickMulti(this,'study','NDA GAT')">NDA GAT</div>
-        <div class="cbtn purple" onclick="pickMulti(this,'study','TryHackMe')">TryHackMe</div>
-        <div class="cbtn purple" onclick="pickMulti(this,'study','AWS')">AWS</div>
-        <div class="cbtn purple" onclick="pickMulti(this,'study','College')">College</div>
-        <div class="cbtn purple" onclick="pickMulti(this,'study','Kaggle/ML')">Kaggle/ML</div>
-        <div class="cbtn purple" onclick="pickMulti(this,'study','LeetCode')">LeetCode</div>
-        <div class="cbtn red" onclick="pickMulti(this,'study','Nothing')">Nothing</div>
-      </div>
-      <label class="fl">Study hours</label>
-      <div class="choice-row">
-        <div class="cbtn" onclick="pick(this,'shrs','<1hr')">&lt;1hr</div>
-        <div class="cbtn" onclick="pick(this,'shrs','1-2hrs')">1-2hrs</div>
-        <div class="cbtn green" onclick="pick(this,'shrs','2-4hrs')">2-4hrs</div>
-        <div class="cbtn green" onclick="pick(this,'shrs','4+hrs')">4+hrs</div>
-      </div>
-      <label class="fl">Study quality / focus</label>
-      <div class="star-row" id="study-stars">
-        <span class="star" onclick="setStars('study',1)">⭐</span>
-        <span class="star" onclick="setStars('study',2)">⭐</span>
-        <span class="star" onclick="setStars('study',3)">⭐</span>
-        <span class="star" onclick="setStars('study',4)">⭐</span>
-        <span class="star" onclick="setStars('study',5)">⭐</span>
-      </div>
-      <label class="fl">What did you learn / accomplish today?</label>
-      <textarea id="ci-learn" placeholder="e.g. Finished TryHackMe Linux fundamentals, solved 2 LeetCode easy, revised trig formulas..." style="height:80px"></textarea>
-    </div>
-
-    <div class="card">
-      <div class="ct">✅ Daily habits checklist</div>
-      <div id="habits-list">
-        <div class="cl-item"><div class="cl-check" onclick="toggleHabit(this)" data-habit="Morning run/workout">✓</div><div class="cl-label">Morning run / workout</div></div>
-        <div class="cl-item"><div class="cl-check" onclick="toggleHabit(this)" data-habit="NDA prep">✓</div><div class="cl-label">NDA prep done</div></div>
-        <div class="cl-item"><div class="cl-check" onclick="toggleHabit(this)" data-habit="TryHackMe/Cybersec">✓</div><div class="cl-label">TryHackMe / cybersec</div></div>
-        <div class="cl-item"><div class="cl-check" onclick="toggleHabit(this)" data-habit="LinkedIn post">✓</div><div class="cl-label">Posted on LinkedIn</div></div>
-        <div class="cl-item"><div class="cl-check" onclick="toggleHabit(this)" data-habit="LeetCode">✓</div><div class="cl-label">Solved LeetCode problem</div></div>
-        <div class="cl-item"><div class="cl-check" onclick="toggleHabit(this)" data-habit="Read/learn">✓</div><div class="cl-label">Read / learned something new</div></div>
-        <div class="cl-item"><div class="cl-check" onclick="toggleHabit(this)" data-habit="No junk food">✓</div><div class="cl-label">No junk food</div></div>
-        <div class="cl-item"><div class="cl-check" onclick="toggleHabit(this)" data-habit="Slept on time">✓</div><div class="cl-label">Slept on time</div></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="ct">🏆 Wins & struggles</div>
-      <label class="fl">Today's win (even small ones count)</label>
-      <textarea id="ci-win" placeholder="e.g. Woke up at 6am, completed all reminders, solved a hard problem..." style="height:68px"></textarea>
-      <label class="fl">Struggle or challenge</label>
-      <textarea id="ci-struggle" placeholder="e.g. Couldn't focus after lunch, skipped gym, felt demotivated..." style="height:68px"></textarea>
-      <label class="fl">Notes / anything else</label>
-      <textarea id="ci-notes" placeholder="Anything — thoughts, observations, things that happened today..." style="height:80px"></textarea>
-    </div>
-
-    <div class="card">
-      <div class="ct">🌅 Tomorrow's intention</div>
-      <label class="fl">One main goal for tomorrow</label>
-      <input type="text" id="ci-tmr" placeholder="e.g. Complete TryHackMe room 5, run 4km, revise trig">
-      <label class="fl">Rate today overall</label>
-      <div class="star-row" id="day-stars">
-        <span class="star" onclick="setStars('day',1)">⭐</span>
-        <span class="star" onclick="setStars('day',2)">⭐</span>
-        <span class="star" onclick="setStars('day',3)">⭐</span>
-        <span class="star" onclick="setStars('day',4)">⭐</span>
-        <span class="star" onclick="setStars('day',5)">⭐</span>
-      </div>
-    </div>
-
-    <button class="pbtn" onclick="saveCI()" style="margin:0 0 12px">☁ Save full check-in</button>
-
-    <div class="card">
-      <div class="ct">Recent logs</div>
-      <div id="logList"><div style="font-size:13px;color:var(--text2)">No logs yet.</div></div>
-    </div>
-  </div>
-
-  <!-- ══ PLATFORMS ══ -->
-  <div class="sec" id="tab-platforms">
-    <div class="section-note">Mark platforms as done each day. Consistency = visibility = opportunities.</div>
-    <div class="card">
-      <div class="ct">Today's platform checklist</div>
-      <div id="platList"></div>
-    </div>
-    <div class="card">
-      <div class="ct">🤖 AI platform reminder</div>
-      <div id="plat-ai"><div class="ai-loading"><div class="dot-pulse"><span></span><span></span><span></span></div><span>Generating...</span></div></div>
-      <button class="pbtn ghost sm" onclick="fetchAI('plat')">↻ Refresh</button>
-    </div>
-    <div class="card">
-      <div class="ct">Log custom activity</div>
-      <label class="fl">Platform</label>
-      <select id="pl-nm">
-        <option>LinkedIn</option><option>LeetCode</option><option>GitHub</option>
-        <option>TryHackMe</option><option>HackerRank</option><option>Twitter / X</option>
+  <div class="card">
+    <div class="card-title">💪 Body & Health</div>
+    <div class="form-group">
+      <label class="form-label">Workout Done</label>
+      <select class="form-select" id="ci-workout">
+        <option value="">Select workout</option>
+        <option>🏃 Morning Run</option>
+        <option>🏋️ Gym Session</option>
+        <option>🧘 Yoga / Stretching</option>
+        <option>🚴 Cycling</option>
+        <option>⚽ Sports</option>
+        <option>🏊 Swimming</option>
+        <option>💪 Home Workout</option>
+        <option>❌ Skipped</option>
       </select>
-      <label class="fl">What did you do?</label>
-      <input type="text" id="pl-act" placeholder="e.g. Posted about Linux basics, solved 2 easy problems">
-      <button class="pbtn" onclick="logPlat()">Log activity</button>
     </div>
-  </div>
-
-  <!-- ══ GOALS ══ -->
-  <div class="sec" id="tab-goals">
-    <div class="card">
-      <div class="ct">Active goals</div>
-      <div id="goalList"></div>
+    <div class="form-group">
+      <label class="form-label">Run Distance (km)</label>
+      <input type="number" class="form-input" id="ci-run-km" placeholder="e.g. 3.5" step="0.1">
     </div>
-    <div class="card">
-      <div class="ct">Add / update goal</div>
-      <label class="fl">Goal name</label>
-      <input type="text" id="g-nm" placeholder="e.g. Complete TryHackMe Pre-Security path">
-      <label class="fl">Category</label>
-      <select id="g-cat">
-        <option>NDA / Defence</option><option>Academics</option>
-        <option>Fitness</option><option>Career</option><option>Personal</option><option>Habit</option>
-      </select>
-      <label class="fl">Target date</label>
-      <input type="date" id="g-dt">
-      <label class="fl">Progress (%)</label>
-      <input type="number" id="g-pct" min="0" max="100" placeholder="0">
-      <label class="fl">Notes</label>
-      <input type="text" id="g-note" placeholder="Any extra info about this goal">
-      <button class="pbtn" onclick="addGoal()">Save goal</button>
-    </div>
-  </div>
-
-  <!-- ══ UPSKILL ══ -->
-  <div class="sec" id="tab-upskill">
-    <div class="card">
-      <div class="ct">🤖 AI upskill suggestions</div>
-      <div id="upskill-ai"><div class="ai-loading"><div class="dot-pulse"><span></span><span></span><span></span></div><span>Generating personalised suggestions...</span></div></div>
-      <button class="pbtn ghost sm" onclick="fetchAI('upskill')">↻ Refresh</button>
-    </div>
-    <div class="card">
-      <div class="ct">Daily upskill checklist</div>
-      <div id="upskill-list"></div>
-    </div>
-    <div class="card">
-      <div class="ct">Recommended resources</div>
-      <div id="resources-list"></div>
-    </div>
-  </div>
-
-  <!-- ══ REMINDERS ══ -->
-  <div class="sec" id="tab-reminders">
-    <div class="card">
-      <div class="ct">Today's schedule</div>
-      <div id="remList"></div>
-    </div>
-    <div class="card">
-      <div class="ct">Add reminder</div>
-      <label class="fl">Label</label>
-      <input type="text" id="rem-lbl" placeholder="e.g. NDA Maths revision">
-      <label class="fl">Time</label>
-      <input type="time" id="rem-t">
-      <label class="fl">Category</label>
-      <select id="rem-c">
-        <option value="nda">NDA / Defence</option>
-        <option value="fit">Fitness</option>
-        <option value="acad">Academics</option>
-        <option value="goal">Personal</option>
-        <option value="plat">Platform</option>
-      </select>
-      <button class="pbtn" onclick="addRem()">Add reminder</button>
-    </div>
-  </div>
-
-  <!-- ══ EXAMS ══ -->
-  <div class="sec" id="tab-exams">
-    <div class="card">
-      <div class="ct">Countdowns</div>
-      <div class="stat2">
-        <div class="ecard"><div class="ename">NDA April</div><div class="ecnt" id="nda-e">4</div><div class="edlbl">days · practice</div></div>
-        <div class="ecard"><div class="ename">Midsems</div><div class="ecnt" id="mid-e">13</div><div class="edlbl">days · late April</div></div>
-        <div class="ecard"><div class="ename">Endsems</div><div class="ecnt" id="end-e">46</div><div class="edlbl">days · May-June</div></div>
-        <div class="ecard"><div class="ename">NDA Sept</div><div class="ecnt" id="ndas-e">158</div><div class="edlbl">days · real target</div></div>
+    <div class="form-group">
+      <label class="form-label">Body Feeling</label>
+      <div class="rating-group" id="bodyFeeling">
+        <button class="rating-btn" onclick="setRating('bodyFeeling','Tired',this)">😴 Tired</button>
+        <button class="rating-btn" onclick="setRating('bodyFeeling','Sore',this)">😣 Sore</button>
+        <button class="rating-btn" onclick="setRating('bodyFeeling','Normal',this)">😐 Normal</button>
+        <button class="rating-btn" onclick="setRating('bodyFeeling','Energized',this)">⚡ Energized</button>
       </div>
     </div>
-    <div class="card">
-      <div class="ct">NDA subjects</div>
-      <div id="ndaSubj"></div>
-    </div>
-    <div class="card">
-      <div class="ct">Midsem subjects</div>
-      <div id="midSubj"></div>
-    </div>
-  </div>
-
-  <!-- ══ FITNESS ══ -->
-  <div class="sec" id="tab-fitness">
-    <div class="wgrid">
-      <div class="wtile"><div class="wv" id="fw-run">0</div><div class="wl">Runs this week</div></div>
-      <div class="wtile"><div class="wv" id="fw-gym">0</div><div class="wl">Gym sessions</div></div>
-      <div class="wtile"><div class="wv">4th yr</div><div class="wl">Marathon goal</div></div>
-      <div class="wtile"><div class="wv" id="fw-str">1</div><div class="wl">Active streak</div></div>
-    </div>
-    <div class="card">
-      <div class="ct">This week</div>
-      <div class="barrow" id="wkbars"></div>
-      <div class="dayrow"><div class="wd">M</div><div class="wd">T</div><div class="wd">W</div><div class="wd">T</div><div class="wd">F</div><div class="wd">S</div><div class="wd">S</div></div>
-    </div>
-    <div class="card">
-      <div class="ct">Log workout</div>
-      <label class="fl">Type</label>
-      <select id="wt"><option>Run</option><option>Gym</option><option>Run + Gym</option><option>Rest day</option></select>
-      <label class="fl">Details (distance, duration, exercises)</label>
-      <input type="text" id="wn" placeholder="e.g. 3.5km run in 24 min, PR on bench 60kg">
-      <button class="pbtn" onclick="logWorkout()">Log workout</button>
+    <div class="form-row">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Water (glasses)</label>
+        <input type="number" class="form-input" id="ci-water" placeholder="e.g. 8" min="0" max="20">
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Diet Quality</label>
+        <select class="form-select" id="ci-diet">
+          <option value="">Select</option>
+          <option>🥗 Very Healthy</option>
+          <option>👍 Good</option>
+          <option>😐 Average</option>
+          <option>🍕 Junk Food</option>
+        </select>
+      </div>
     </div>
   </div>
 
-  <!-- ══ REPORTS ══ -->
-  <div class="sec" id="tab-reports">
-    <div class="rtabs">
-      <div class="rtab on" onclick="switchRep('daily',this)">Daily</div>
-      <div class="rtab" onclick="switchRep('weekly',this)">Weekly</div>
-      <div class="rtab" onclick="switchRep('monthly',this)">Monthly</div>
+  <div class="card">
+    <div class="card-title">🧠 Mind & Mood</div>
+    <div class="form-group">
+      <label class="form-label">How are you feeling?</label>
+      <div class="emotion-row" id="moodPicker">
+        <span class="emotion-btn" onclick="selectMood('😞','Sad',this)" title="Sad">😞</span>
+        <span class="emotion-btn" onclick="selectMood('😟','Stressed',this)" title="Stressed">😟</span>
+        <span class="emotion-btn" onclick="selectMood('😐','Neutral',this)" title="Neutral">😐</span>
+        <span class="emotion-btn" onclick="selectMood('🙂','Good',this)" title="Good">🙂</span>
+        <span class="emotion-btn" onclick="selectMood('😊','Happy',this)" title="Happy">😊</span>
+        <span class="emotion-btn" onclick="selectMood('🤩','Amazing',this)" title="Amazing">🤩</span>
+      </div>
     </div>
-    <div class="rsec on" id="rep-daily">
-      <div class="search-wrap"><span class="search-ico">🔍</span><input type="text" id="srch-d" placeholder="Search logs by date, activity, notes..." oninput="searchLogs()"></div>
-      <div id="daily-logs"></div>
+    <div class="form-group">
+      <label class="form-label">Energy Level</label>
+      <div class="rating-group" id="energyLevel">
+        <button class="rating-btn" onclick="setRating('energyLevel','Low',this)">🔋 Low</button>
+        <button class="rating-btn" onclick="setRating('energyLevel','Medium',this)">⚡ Medium</button>
+        <button class="rating-btn" onclick="setRating('energyLevel','High',this)">🚀 High</button>
+      </div>
     </div>
-    <div class="rsec" id="rep-weekly">
-      <div class="card">
-        <div class="ct">This week</div>
-        <div class="stat2">
-          <div class="stile"><div class="sv" id="rw-ci">0</div><div class="sl">Check-ins</div></div>
-          <div class="stile"><div class="sv" id="rw-wo">0</div><div class="sl">Workouts</div></div>
-          <div class="stile"><div class="sv" id="rw-st">0</div><div class="sl">Study days</div></div>
-          <div class="stile"><div class="sv" id="rw-en">–</div><div class="sl">Avg mood</div></div>
+    <div class="form-group">
+      <label class="form-label">Stress Level (1-5)</label>
+      <div class="star-row" id="stressLevel">
+        <span class="star" onclick="setStar('stressLevel',1,this)">😰</span>
+        <span class="star" onclick="setStar('stressLevel',2,this)">😰</span>
+        <span class="star" onclick="setStar('stressLevel',3,this)">😰</span>
+        <span class="star" onclick="setStar('stressLevel',4,this)">😰</span>
+        <span class="star" onclick="setStar('stressLevel',5,this)">😰</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Focus Quality</label>
+      <div class="rating-group" id="focusQuality">
+        <button class="rating-btn" onclick="setRating('focusQuality','Scattered',this)">🌀 Scattered</button>
+        <button class="rating-btn" onclick="setRating('focusQuality','Average',this)">😐 Average</button>
+        <button class="rating-btn" onclick="setRating('focusQuality','Focused',this)">🎯 Focused</button>
+        <button class="rating-btn" onclick="setRating('focusQuality','Deep Work',this)">🔥 Deep Work</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📚 Study & Learning</div>
+    <div class="form-group">
+      <label class="form-label">What did you study?</label>
+      <div class="multi-select" id="studyTopics">
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">NDA Math</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">NDA GK</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">NDA English</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">Physics</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">Chemistry</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">TryHackMe</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">LeetCode</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">Kaggle/ML</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">AWS/Cloud</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">Cybersecurity</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">College Subjects</span>
+        <span class="multi-chip" onclick="toggleChip(this,'studyTopics')">Reading</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Study Hours</label>
+        <input type="number" class="form-input" id="ci-study-hours" placeholder="e.g. 4" min="0" max="24" step="0.5">
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Study Quality</label>
+        <select class="form-select" id="ci-study-quality">
+          <option value="">Select</option>
+          <option>🔥 Excellent</option>
+          <option>👍 Good</option>
+          <option>😐 Average</option>
+          <option>😞 Poor</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">✅ Daily Habits</div>
+    <div class="habits-grid" id="habitsGrid">
+      <div class="habit-item" onclick="toggleHabit(this,'morning-run')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">🏃 Morning Run</span>
+      </div>
+      <div class="habit-item" onclick="toggleHabit(this,'nda-study')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">📖 NDA Study</span>
+      </div>
+      <div class="habit-item" onclick="toggleHabit(this,'cybersec')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">🔐 Cybersec</span>
+      </div>
+      <div class="habit-item" onclick="toggleHabit(this,'linkedin')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">💼 LinkedIn</span>
+      </div>
+      <div class="habit-item" onclick="toggleHabit(this,'leetcode')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">💻 LeetCode</span>
+      </div>
+      <div class="habit-item" onclick="toggleHabit(this,'reading')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">📚 Reading</span>
+      </div>
+      <div class="habit-item" onclick="toggleHabit(this,'no-junk')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">🥗 No Junk Food</span>
+      </div>
+      <div class="habit-item" onclick="toggleHabit(this,'sleep-time')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">😴 Sleep on Time</span>
+      </div>
+      <div class="habit-item" onclick="toggleHabit(this,'meditation')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">🧘 Meditation</span>
+      </div>
+      <div class="habit-item" onclick="toggleHabit(this,'no-phone')">
+        <div class="habit-check">✓</div>
+        <span class="habit-label">📵 No Phone Morning</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🌟 Reflections</div>
+    <div class="form-group">
+      <label class="form-label">🏆 Win of the Day</label>
+      <textarea class="form-textarea" id="ci-win" placeholder="What did you accomplish today?" style="min-height:60px"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">😤 Struggle / Challenge</label>
+      <textarea class="form-textarea" id="ci-struggle" placeholder="What was hard today?" style="min-height:60px"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">📝 Notes / Everything else</label>
+      <textarea class="form-textarea" id="ci-notes" placeholder="Anything else — thoughts, updates, what you told Claude..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">🎯 Tomorrow's Main Intention</label>
+      <input type="text" class="form-input" id="ci-intention" placeholder="What's your #1 goal for tomorrow?">
+    </div>
+    <div class="form-group">
+      <label class="form-label">⭐ Rate Your Day</label>
+      <div class="star-row" id="dayRating">
+        <span class="star" onclick="setStar('dayRating',1,this)">⭐</span>
+        <span class="star" onclick="setStar('dayRating',2,this)">⭐</span>
+        <span class="star" onclick="setStar('dayRating',3,this)">⭐</span>
+        <span class="star" onclick="setStar('dayRating',4,this)">⭐</span>
+        <span class="star" onclick="setStar('dayRating',5,this)">⭐</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="saveCheckin()" style="margin-bottom:16px">☁️ Save Check-in</button>
+
+  <div class="card">
+    <div class="card-title">📋 Recent Logs</div>
+    <div id="recentLogs"></div>
+  </div>
+</div>
+
+<!-- ==================== AI COACH ==================== -->
+<div class="page" id="page-ai">
+  <div class="section-title">AI Life Coach</div>
+  <div class="section-sub">Ask anything — your coach knows your history</div>
+
+  <div class="chat-container">
+    <div class="chat-header">
+      <div class="ai-dot"></div>
+      <div class="chat-header-text">
+        <h3>Aryash's Personal AI</h3>
+        <p>Powered by Gemini · Knows your check-in history</p>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg ai">
+        <div class="msg-avatar">AI</div>
+        <div>
+          <div class="msg-bubble">Hey Aryash! 👋 I'm your personal AI coach. I know your goals, check-in history, and daily progress. Ask me anything — about your NDA prep, cybersecurity journey, fitness, study plans, or just talk about what's on your mind. What's up today?</div>
+          <div class="msg-time">Ready to help</div>
         </div>
-        <div id="weekly-ai"></div>
-        <button class="pbtn ghost sm" onclick="fetchAI('weekly')">↻ Refresh review</button>
       </div>
     </div>
-    <div class="rsec" id="rep-monthly">
-      <div class="card">
-        <div class="ct">This month</div>
-        <div class="stat2">
-          <div class="stile"><div class="sv" id="rm-ci">0</div><div class="sl">Check-ins</div></div>
-          <div class="stile"><div class="sv" id="rm-wo">0</div><div class="sl">Workouts</div></div>
-          <div class="stile"><div class="sv" id="rm-gl">0</div><div class="sl">Goals</div></div>
-          <div class="stile"><div class="sv" id="rm-pl">0</div><div class="sl">Platform logs</div></div>
-        </div>
-        <div id="monthly-ai"></div>
-        <button class="pbtn ghost sm" onclick="fetchAI('monthly')">↻ Refresh review</button>
-      </div>
-    </div>
-    <div class="card" style="margin-top:10px">
-      <div class="ct">Backup</div>
-      <button class="pbtn ghost sm" style="margin-top:0" onclick="exportData()">📥 Download JSON backup</button>
-      <div style="font-size:11.5px;color:var(--text2);margin-top:8px">Save weekly to Google Drive. Data also permanently in Firebase.</div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chatInput" placeholder="Ask your AI coach anything..." onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="send-btn" id="sendBtn" onclick="sendChat()">➤</button>
     </div>
   </div>
 
-  <!-- ══ SETTINGS ══ -->
-  <div class="sec" id="tab-settings">
-    <div class="card" id="user-card"><div class="ct">Account</div><div style="color:var(--text2);font-size:13px">Loading...</div></div>
-    <div class="card">
-      <div class="ct">App info</div>
-      <div style="font-size:13px;color:var(--text2);line-height:1.9">
-        Version: <strong style="color:var(--text)">3.0 — April 2026</strong><br>
-        Storage: <strong style="color:var(--text)">Firebase Firestore (cloud)</strong><br>
-        AI: <strong style="color:var(--text)">Gemini 2.0 Flash (free)</strong><br>
-        Plan: <strong style="color:var(--green)">Free forever</strong>
-      </div>
-    </div>
-    <div class="card">
-      <div class="ct">Notifications</div>
-      <button class="pbtn ghost sm" style="margin-top:0" onclick="requestNotifPerm()">Enable browser reminders</button>
-    </div>
-    <div class="card">
-      <div class="ct">Data</div>
-      <button class="pbtn ghost sm" style="margin-top:0" onclick="exportData()">📥 Export backup</button>
-      <button class="pbtn danger sm" onclick="confirmSignOut()">Sign out</button>
+  <div class="card">
+    <div class="card-title">💡 Quick Prompts</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <button class="rating-btn" onclick="quickPrompt('Give me my personalized study plan for today based on my check-ins')">📚 Today's Study Plan</button>
+      <button class="rating-btn" onclick="quickPrompt('Analyze my recent check-ins and tell me what patterns you see')">📊 Analyze My Patterns</button>
+      <button class="rating-btn" onclick="quickPrompt('What should I focus on this week for NDA preparation?')">🎯 NDA Focus</button>
+      <button class="rating-btn" onclick="quickPrompt('Give me a cybersecurity learning roadmap based on my current level')">🔐 Cyber Roadmap</button>
+      <button class="rating-btn" onclick="quickPrompt('I am feeling demotivated. Give me a boost and remind me why I am doing this')">💪 Motivate Me</button>
+      <button class="rating-btn" onclick="quickPrompt('Review my fitness progress and suggest improvements')">🏃 Fitness Review</button>
+      <button class="rating-btn" onclick="quickPrompt('What skills should I build this month for my career goals?')">🚀 Career Skills</button>
     </div>
   </div>
 </div>
 
-<!-- NOTIF PANEL -->
-<div class="notif-overlay" id="notifOverlay" onclick="toggleNotifs()">
-  <div class="notif-panel" onclick="event.stopPropagation()">
-    <div class="np-head"><span class="np-title">Notifications</span><button class="np-close" onclick="toggleNotifs()">✕</button></div>
+<!-- ==================== GOALS ==================== -->
+<div class="page" id="page-goals">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <div class="section-title" style="margin-bottom:0">My Goals</div>
+    <button class="btn btn-primary btn-sm" onclick="openGoalModal()">+ Add Goal</button>
+  </div>
+  <div id="goalsList"></div>
+</div>
+
+<!-- ==================== ROADMAP ==================== -->
+<div class="page" id="page-roadmap">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="section-title" style="margin-bottom:0">My Roadmap</div>
+    <button class="btn btn-primary btn-sm" onclick="generateRoadmap()">🤖 AI Update</button>
+  </div>
+  <div class="section-sub">AI updates your roadmap daily based on your check-ins</div>
+
+  <div class="ai-suggestion" id="roadmapAISummary">
+    <div class="ai-suggestion-label">🗺 AI Roadmap Analysis</div>
+    <div class="ai-suggestion-text" id="roadmapAIText">Click "AI Update" to get a personalized roadmap analysis based on your recent progress.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 NDA Preparation</div>
+    <div id="roadmapNDA"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🔐 Cybersecurity Journey</div>
+    <div id="roadmapCyber"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">💼 Career & Skills</div>
+    <div id="roadmapCareer"></div>
+  </div>
+</div>
+
+<!-- ==================== PLATFORMS ==================== -->
+<div class="page" id="page-platforms">
+  <div class="section-title">Platforms Tracker</div>
+  <div class="section-sub">Stay consistent across all your platforms</div>
+  <div id="platformsList"></div>
+</div>
+
+<!-- ==================== FITNESS ==================== -->
+<div class="page" id="page-fitness">
+  <div class="section-title">Fitness Log</div>
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" id="fitnessStreak">0</div>
+      <div class="stat-label">Day Streak</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="totalRuns">0</div>
+      <div class="stat-label">Total Runs</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="totalKm">0</div>
+      <div class="stat-label">Total KM</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🏃 Log Workout</div>
+    <div class="form-group">
+      <label class="form-label">Activity</label>
+      <select class="form-select" id="fit-type">
+        <option>🏃 Run</option>
+        <option>🏋️ Gym</option>
+        <option>🧘 Yoga</option>
+        <option>🚴 Cycling</option>
+        <option>⚽ Sports</option>
+        <option>💪 Home Workout</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Distance (km)</label>
+        <input type="number" class="form-input" id="fit-km" placeholder="0.0" step="0.1">
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Duration (min)</label>
+        <input type="number" class="form-input" id="fit-mins" placeholder="30">
+      </div>
+    </div>
+    <div class="form-group" style="margin-top:10px">
+      <label class="form-label">Notes</label>
+      <input type="text" class="form-input" id="fit-notes" placeholder="How was it?">
+    </div>
+    <button class="btn btn-primary" style="margin-top:6px" onclick="logWorkout()">Log Workout</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 Recent Workouts</div>
+    <div id="workoutLog"></div>
+  </div>
+</div>
+
+<!-- ==================== REPORTS ==================== -->
+<div class="page" id="page-reports">
+  <div class="section-title">Reports</div>
+  <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+    <button class="report-period-btn active" onclick="setReport('daily',this)">Daily</button>
+    <button class="report-period-btn" onclick="setReport('weekly',this)">Weekly</button>
+    <button class="report-period-btn" onclick="setReport('monthly',this)">Monthly</button>
+  </div>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-bar" id="reportSearch" placeholder="Search logs..." oninput="searchReports()">
+  </div>
+
+  <div id="reportContent"></div>
+</div>
+
+<!-- ==================== GOAL MODAL ==================== -->
+<div class="modal-overlay" id="goalModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Add New Goal</div>
+    <div class="form-group">
+      <label class="form-label">Goal Title</label>
+      <input type="text" class="form-input" id="goal-title" placeholder="e.g. Clear NDA April 2026">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Category</label>
+      <select class="form-select" id="goal-cat">
+        <option>NDA Preparation</option>
+        <option>Cybersecurity</option>
+        <option>Fitness</option>
+        <option>Career & Skills</option>
+        <option>Academic</option>
+        <option>Personal Growth</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Target Date</label>
+      <input type="date" class="form-input" id="goal-date">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Progress (%)</label>
+      <input type="number" class="form-input" id="goal-progress" placeholder="0" min="0" max="100">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description (optional)</label>
+      <textarea class="form-textarea" id="goal-desc" placeholder="What does success look like?" style="min-height:60px"></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="saveGoal()">Save Goal</button>
+    <button class="btn btn-secondary" style="margin-top:8px" onclick="closeModal('goalModal')">Cancel</button>
+  </div>
+</div>
+
+<!-- NOTIF MODAL -->
+<div class="modal-overlay" id="notifModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🔔 Reminders</div>
     <div id="notifList"></div>
+    <div class="divider"></div>
+    <div class="modal-title" style="font-size:15px">Add Reminder</div>
+    <div class="form-row">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Time</label>
+        <input type="time" class="form-input" id="notif-time">
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label">Category</label>
+        <select class="form-select" id="notif-cat">
+          <option>Study</option>
+          <option>Fitness</option>
+          <option>Platform</option>
+          <option>Meal</option>
+          <option>Sleep</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" style="margin-top:10px">
+      <label class="form-label">Title</label>
+      <input type="text" class="form-input" id="notif-title" placeholder="e.g. NDA Study Session">
+    </div>
+    <button class="btn btn-primary" onclick="addReminder()">Add Reminder</button>
+    <button class="btn btn-secondary" style="margin-top:8px" onclick="closeModal('notifModal')">Close</button>
   </div>
 </div>
 
+<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<div class="bottom-nav">
-  <button class="bnb on" onclick="go('home')"><span class="bnb-icon">🏠</span><span class="bnb-lbl">Home</span></button>
-  <button class="bnb" onclick="go('checkin')"><span class="bnb-icon">✏️</span><span class="bnb-lbl">Check-in</span></button>
-  <button class="bnb" onclick="go('platforms')"><span class="bnb-icon">📱</span><span class="bnb-lbl">Platforms</span></button>
-  <button class="bnb" onclick="go('reports')"><span class="bnb-icon">📊</span><span class="bnb-lbl">Reports</span></button>
-  <button class="bnb" onclick="go('settings')"><span class="bnb-icon">⚙️</span><span class="bnb-lbl">Settings</span></button>
-</div>
+<script>
+// ============================================================
+// CONFIG — paste your Firebase config here
+// ============================================================
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyANYmhEf2UWTFlDAkCX8JVXjPHZi7xnIMY",
+  authDomain: "aryash-hub.firebaseapp.com",
+  projectId: "aryash-hub",
+  storageBucket: "aryash-hub.firebasestorage.app",
+  messagingSenderId: "735437297466",
+  appId: "1:735437297466:web:3f6df3bb944ab6c5543f38"
+};
+const GEMINI_KEY = "AIzaSyCFnQW9IEytupEuSd91PPaArEfUdoGbfaM";
 
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, doc, collection, setDoc, getDoc, addDoc, deleteDoc, onSnapshot, query, orderBy, limit, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
-
-const firebaseConfig = {
-  apiKey:"AIzaSyBxpKmpXLwvaCBxCWvAQgfWWRnXIIw2JoA",
-  authDomain:"aryash-hub.firebaseapp.com",
-  projectId:"aryash-hub",
-  storageBucket:"aryash-hub.firebasestorage.app",
-  messagingSenderId:"735437297466",
-  appId:"1:735437297466:web:d4e1c77675adaf5c102203"
+// ============================================================
+// STATE
+// ============================================================
+let state = {
+  checkins: [],
+  goals: [],
+  workouts: [],
+  reminders: [],
+  platforms: [
+    { id:'linkedin', name:'LinkedIn', icon:'💼', freq:'Daily', lastPosted: null },
+    { id:'leetcode', name:'LeetCode', icon:'💻', freq:'Daily', lastPosted: null },
+    { id:'github', name:'GitHub', icon:'🐙', freq:'Daily', lastPosted: null },
+    { id:'tryhackme', name:'TryHackMe', icon:'🔐', freq:'3x/week', lastPosted: null },
+    { id:'kaggle', name:'Kaggle', icon:'📊', freq:'Weekly', lastPosted: null },
+    { id:'twitter', name:'Twitter/X', icon:'🐦', freq:'Daily', lastPosted: null },
+  ],
+  ratings: {},
+  selectedMood: null,
+  selectedMoodEmoji: null,
+  habits: {},
+  chatHistory: [],
+  currentReport: 'daily'
 };
 
-const fbApp = initializeApp(firebaseConfig);
-const auth = getAuth(fbApp);
-const db = getFirestore(fbApp);
-
-// ── State ────────────────────────────────────────
-let uid=null, repMode='daily', unsubFns=[];
-let S={checkins:[],reminders:[],goals:[],workouts:[],platLogs:[],streak:1};
-
-// ci state
-let ciState={sq:'',wo:'',wn:'',body:'',diet:'',water:'',energy:'',stress:'',mood:'',focusStar:0,studyStar:0,dayStar:0,study:[],shrs:'',learn:'',win:'',struggle:'',notes:'',tmr:'',habits:[]};
-
-const TABS=['home','checkin','platforms','goals','upskill','reminders','exams','fitness','reports','settings'];
-const PLATFORMS=[
-  {name:'LinkedIn',icon:'💼',freq:'Daily',color:'#0077b5'},
-  {name:'LeetCode',icon:'🧩',freq:'Daily',color:'#f89f1b'},
-  {name:'GitHub',icon:'🐙',freq:'Every 2 days',color:'#24292e'},
-  {name:'TryHackMe',icon:'🔐',freq:'Daily',color:'#cc0000'},
-  {name:'HackerRank',icon:'⚙️',freq:'Weekly',color:'#2ec866'},
-  {name:'Twitter / X',icon:'🐦',freq:'3x week',color:'#1da1f2'},
-];
-const UPSKILL_ITEMS=[
-  {icon:'🔐',bg:'#fdecea',title:'TryHackMe — 1 room/day',desc:'Complete one room on your Pre-Security path. 20-30 min daily = huge progress.'},
-  {icon:'🧩',bg:'#fdf0d5',title:'LeetCode — 1 problem/day',desc:'Start with Easy. Arrays and strings first. Consistency beats intensity.'},
-  {icon:'💼',bg:'#e8f1fb',title:'LinkedIn — post something daily',desc:"Share what you learned today. Even 2 sentences. Build your profile now."},
-  {icon:'🐙',bg:'#f0eeff',title:'GitHub — commit something',desc:'Push code, notes, or projects daily. Green squares = proof of work.'},
-  {icon:'📖',bg:'#eaf3de',title:'Read tech for 15 min',desc:'Follow cybersecurity news. Use TechCrunch, Krebs on Security, or Reddit r/netsec.'},
-  {icon:'🧠',bg:'#fdf0d5',title:'Flashcards — NDA revision',desc:'10-15 min of active recall on NDA formulas, dates, or GAT vocab daily.'},
-];
-const RESOURCES=[
-  {icon:'🔐',bg:'#fdecea',title:'TryHackMe Pre-Security',url:'https://tryhackme.com/path/outline/presecurity',desc:'Free cybersecurity learning path'},
-  {icon:'🧩',bg:'#fdf0d5',title:'LeetCode Top 150',url:'https://leetcode.com/studyplan/top-interview-150',desc:'Most asked interview problems'},
-  {icon:'☁️',bg:'#e8f1fb',title:'AWS Cloud Practitioner',url:'https://aws.amazon.com/certification/certified-cloud-practitioner',desc:'Free prep resources available'},
-  {icon:'📺',bg:'#f0eeff',title:'Kaggle Learn',url:'https://kaggle.com/learn',desc:'Free ML/AI courses with certificates'},
-  {icon:'📚',bg:'#eaf3de',title:'NDA Previous Papers',url:'https://upsc.gov.in/examinations/previous-year-question-papers',desc:'UPSC official previous papers'},
-];
-const NDA_SUBJECTS=[{n:'Mathematics',s:'sprog'},{n:'General Ability Test',s:'sprog'},{n:'Physics',s:'stodo'},{n:'Chemistry',s:'stodo'},{n:'English',s:'sdone'},{n:'History & Civics',s:'stodo'},{n:'Geography',s:'stodo'}];
-const MID_SUBJECTS=[{n:'Engineering Maths',s:'stodo'},{n:'Programming',s:'stodo'},{n:'Digital Electronics',s:'stodo'},{n:'Communication Skills',s:'stodo'}];
-const DEFAULT_REMINDERS=[
-  {time:'06:00',label:'Morning run',cat:'fit'},{time:'07:30',label:'Freshen up + breakfast',cat:'goal'},
-  {time:'09:00',label:'NDA Maths practice',cat:'nda'},{time:'11:00',label:'TryHackMe session',cat:'acad'},
-  {time:'13:30',label:'Lunch',cat:'goal'},{time:'15:00',label:'College academics',cat:'acad'},
-  {time:'17:30',label:'Post on LinkedIn',cat:'plat'},{time:'18:00',label:'Gym session',cat:'fit'},
-  {time:'20:00',label:'LeetCode – 1 problem',cat:'plat'},{time:'21:00',label:'NDA GAT revision',cat:'nda'},
-  {time:'22:30',label:'Daily check-in',cat:'goal'},
-];
-const DEFAULT_GOALS=[
-  {name:'Clear NDA September 2026',cat:'NDA / Defence',date:'2026-09-14',pct:15},
-  {name:'TryHackMe Pre-Security path',cat:'Academics',date:'2026-06-01',pct:30},
-  {name:'Run 5km non-stop',cat:'Fitness',date:'2026-07-01',pct:20},
-  {name:'AWS Cloud Practitioner cert',cat:'Career',date:'2026-08-01',pct:5},
-  {name:'100 LeetCode problems',cat:'Career',date:'2026-12-01',pct:2},
-];
-
-// ── Helpers ───────────────────────────────────────
-function daysUntil(ds){const n=new Date();n.setHours(0,0,0,0);const t=new Date(ds);t.setHours(0,0,0,0);return Math.max(0,Math.ceil((t-n)/86400000));}
-function toDate(ts){if(!ts)return new Date();if(ts.toDate)return ts.toDate();if(ts.seconds)return new Date(ts.seconds*1000);return new Date(ts);}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
-function showSync(msg='✓ Synced'){const b=document.getElementById('syncBar');b.textContent=msg;b.style.opacity='1';setTimeout(()=>{b.style.opacity='0';},2200);}
-
-function buildContext(){
-  let ctx=`Aryash, 18y, BTech yr1 UP India. Goals: NDA Sept 2026, cybersecurity→AI, marathon 4th year, top student.\nStreak: ${S.streak} days. Check-ins: ${S.checkins.length}. Goals: ${S.goals.length}.\n`;
-  S.checkins.slice(0,5).forEach(c=>{
-    const d=toDate(c.createdAt);
-    ctx+=`- ${d.toLocaleDateString('en-IN')}: mood=${c.mood||'–'}, energy=${c.energy||'–'}, workout=${c.workout||'–'}, study=${Array.isArray(c.study)?c.study.join('+'):c.study||'–'}, win=${c.win||'–'}, struggle=${c.struggle||'–'}, learn=${c.learn||'–'}\n`;
-  });
-  const due=PLATFORMS.filter(p=>{const logs=S.platLogs.filter(l=>l.plat===p.name);return !logs.length||daysUntil(toDate(logs[0].createdAt))>0;}).map(p=>p.name);
-  if(due.length) ctx+=`Platforms not posted today: ${due.join(', ')}\n`;
-  ctx+=`NDA in ${daysUntil('2026-04-13')} days. Midsems in ${daysUntil('2026-04-22')} days. NDA Sept in ${daysUntil('2026-09-14')} days.`;
-  return ctx;
-}
-
-// ── Auth ──────────────────────────────────────────
-window.signInGoogle=async function(){
-  try{const p=new GoogleAuthProvider();await signInWithPopup(auth,p);}
-  catch(e){showToast('Sign in failed: '+e.message);}
-};
-window.confirmSignOut=function(){if(confirm('Sign out?'))signOut(auth);};
-
-onAuthStateChanged(auth,async user=>{
-  document.getElementById('loading-screen').style.display='none';
-  if(user){
-    uid=user.uid;
-    document.getElementById('auth-screen').style.display='none';
-    document.getElementById('main-app').style.display='block';
-    document.getElementById('dateStr').textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});
-    updateCountdowns();
-    await initUser(user);
-    subscribeAll();
-    renderExams();
-    renderUpskill();
-    setTimeout(()=>{fetchAI('home');fetchAI('plat');},1200);
-    scheduleReminders();
-  } else {
-    uid=null;
-    unsubFns.forEach(f=>f());unsubFns=[];
-    document.getElementById('auth-screen').style.display='flex';
-    document.getElementById('main-app').style.display='none';
+// Load from localStorage
+function loadState() {
+  const saved = localStorage.getItem('aryash-hub-v4');
+  if (saved) {
+    const s = JSON.parse(saved);
+    state.checkins = s.checkins || [];
+    state.goals = s.goals || [];
+    state.workouts = s.workouts || [];
+    state.reminders = s.reminders || [];
+    state.chatHistory = s.chatHistory || [];
+    if (s.platforms) {
+      s.platforms.forEach(sp => {
+        const p = state.platforms.find(p => p.id === sp.id);
+        if (p) p.lastPosted = sp.lastPosted;
+      });
+    }
   }
-});
+}
 
-async function initUser(user){
-  const pRef=doc(db,'users',uid,'profile','main');
-  const snap=await getDoc(pRef);
-  if(!snap.exists()){
-    await setDoc(pRef,{name:user.displayName,email:user.email,photo:user.photoURL||'',streak:1,createdAt:serverTimestamp()});
-    for(const r of DEFAULT_REMINDERS) await addDoc(collection(db,'users',uid,'reminders'),r);
-    for(const g of DEFAULT_GOALS) await addDoc(collection(db,'users',uid,'goals'),{...g,createdAt:serverTimestamp()});
-    showToast('Welcome Aryash! App ready ✓');
+function saveState() {
+  localStorage.setItem('aryash-hub-v4', JSON.stringify({
+    checkins: state.checkins,
+    goals: state.goals,
+    workouts: state.workouts,
+    reminders: state.reminders,
+    chatHistory: state.chatHistory.slice(-20),
+    platforms: state.platforms
+  }));
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showPage(name, tabEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  if (tabEl) tabEl.classList.add('active');
+  if (name === 'home') renderHome();
+  if (name === 'goals') renderGoals();
+  if (name === 'reports') renderReports();
+  if (name === 'platforms') renderPlatforms();
+  if (name === 'fitness') renderFitness();
+  if (name === 'roadmap') renderRoadmap();
+  if (name === 'checkin') renderRecentLogs();
+}
+
+// ============================================================
+// HEADER
+// ============================================================
+function initHeader() {
+  const d = new Date();
+  document.getElementById('headerDate').textContent = d.toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long' });
+  updateStreak();
+}
+
+function updateStreak() {
+  const streak = calcStreak();
+  document.getElementById('streakBadge').textContent = '🔥 ' + streak + ' days';
+  document.getElementById('statStreak').textContent = streak;
+}
+
+function calcStreak() {
+  if (!state.checkins.length) return 0;
+  const dates = [...new Set(state.checkins.map(c => c.date))].sort().reverse();
+  let streak = 0;
+  let d = new Date(); d.setHours(0,0,0,0);
+  for (const date of dates) {
+    const cd = new Date(date);
+    const diff = Math.round((d - cd) / 86400000);
+    if (diff === streak) streak++;
+    else break;
   }
-  document.getElementById('user-card').innerHTML=`<div class="ct">Account</div><div class="user-row"><div class="user-avatar">${user.photoURL?`<img src="${user.photoURL}" alt="">`:user.displayName[0]}</div><div><div style="font-size:13px;font-weight:500">${user.displayName}</div><div style="font-size:11px;color:var(--text2)">${user.email}</div></div></div>`;
+  return streak;
 }
 
-function subscribeAll(){
-  const u1=onSnapshot(doc(db,'users',uid,'profile','main'),snap=>{
-    if(snap.exists()){S.streak=snap.data().streak||1;document.getElementById('streakBadge').textContent=S.streak;document.getElementById('h-st').textContent=S.streak;document.getElementById('fw-str').textContent=S.streak;}
-  });
-  const u2=onSnapshot(query(collection(db,'users',uid,'checkins'),orderBy('createdAt','desc'),limit(60)),snap=>{
-    S.checkins=snap.docs.map(d=>({id:d.id,...d.data()}));
-    document.getElementById('h-ci').textContent=S.checkins.length;
-    renderLog();renderHome();renderReports();
-  });
-  const u3=onSnapshot(collection(db,'users',uid,'reminders'),snap=>{
-    S.reminders=snap.docs.map(d=>({id:d.id,...d.data()}));
-    S.reminders.sort((a,b)=>a.time.localeCompare(b.time));
-    renderRems();renderHome();
-  });
-  const u4=onSnapshot(collection(db,'users',uid,'goals'),snap=>{
-    S.goals=snap.docs.map(d=>({id:d.id,...d.data()}));
-    document.getElementById('h-gl').textContent=S.goals.length;
-    renderGoals();
-  });
-  const u5=onSnapshot(query(collection(db,'users',uid,'workouts'),orderBy('createdAt','desc'),limit(30)),snap=>{
-    S.workouts=snap.docs.map(d=>({id:d.id,...d.data()}));renderFit();
-  });
-  const u6=onSnapshot(query(collection(db,'users',uid,'platLogs'),orderBy('createdAt','desc'),limit(60)),snap=>{
-    S.platLogs=snap.docs.map(d=>({id:d.id,...d.data()}));
-    renderPlats();renderHome();renderReports();
-  });
-  unsubFns=[u1,u2,u3,u4,u5,u6];
+// ============================================================
+// RATINGS / HABITS HELPERS
+// ============================================================
+function setRating(group, val, el) {
+  document.querySelectorAll('#' + group + ' .rating-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  state.ratings[group] = val;
 }
 
-// ── AI ────────────────────────────────────────────
-async function callGemini(prompt){
-  const r=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:'',userMsg:prompt})});
-  const d=await r.json();return d.text||'';
+function setStar(group, num, el) {
+  const stars = document.querySelectorAll('#' + group + ' .star');
+  stars.forEach((s, i) => { s.classList.toggle('active', i < num); });
+  state.ratings[group] = num;
 }
 
-window.fetchAI=async function(type){
-  const ids={home:'ai-home',plat:'plat-ai',upskill:'upskill-ai',weekly:'weekly-ai',monthly:'monthly-ai'};
-  const box=document.getElementById(ids[type]);
-  if(!box)return;
-  box.innerHTML='<div class="ai-loading"><div class="dot-pulse"><span></span><span></span><span></span></div><span>Thinking...</span></div>';
-  const ctx=buildContext();
-  const prompts={
-    home:`You are Aryash's personal AI coach. Based on his data:\n${ctx}\n\nGive exactly 3 specific actionable suggestions for TODAY. Numbered 1-3. Each max 2 lines. Be direct, specific, motivating. Reference his actual data.`,
-    plat:`You are Aryash's coach. His data:\n${ctx}\n\nWrite a 2-3 sentence motivating message to post on LinkedIn and solve LeetCode today. Mention his NDA+cybersecurity journey. Friendly, direct, no fluff.`,
-    upskill:`You are Aryash's career coach. His data:\n${ctx}\n\nGive 4 specific upskilling suggestions for this week. Each on a new line starting with a number. Focus on cybersecurity, NDA prep, career building, and habits. Be very specific to his current level and goals.`,
-    weekly:`You are Aryash's weekly coach. His data:\n${ctx}\n\nWrite a 5-6 line weekly review. Cover: what went well, what to improve, energy/mood patterns, and 1 specific focus for next week. Be honest, specific to his data, encouraging.`,
-    monthly:`You are Aryash's monthly coach. His data:\n${ctx}\n\nWrite a 5-7 line monthly review. Cover: overall progress, best habits, biggest gaps, and 2 specific goals for next month. Honest, data-driven, motivating.`,
+function selectMood(emoji, label, el) {
+  document.querySelectorAll('.emotion-btn').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  state.selectedMood = label;
+  state.selectedMoodEmoji = emoji;
+}
+
+function toggleHabit(el, id) {
+  el.classList.toggle('checked');
+  state.habits[id] = el.classList.contains('checked');
+}
+
+function toggleChip(el) {
+  el.classList.toggle('selected');
+}
+
+// ============================================================
+// CHECK-IN
+// ============================================================
+function saveCheckin() {
+  const studyTopics = [...document.querySelectorAll('#studyTopics .multi-chip.selected')].map(c => c.textContent);
+  const habits = Object.keys(state.habits).filter(k => state.habits[k]);
+
+  const checkin = {
+    id: Date.now(),
+    date: new Date().toISOString().split('T')[0],
+    timestamp: new Date().toISOString(),
+    sleepIn: document.getElementById('ci-sleep-in').value,
+    sleepOut: document.getElementById('ci-sleep-out').value,
+    sleepQuality: state.ratings.sleepQuality || '',
+    workout: document.getElementById('ci-workout').value,
+    runKm: document.getElementById('ci-run-km').value,
+    bodyFeeling: state.ratings.bodyFeeling || '',
+    water: document.getElementById('ci-water').value,
+    diet: document.getElementById('ci-diet').value,
+    mood: state.selectedMood || '',
+    moodEmoji: state.selectedMoodEmoji || '',
+    energy: state.ratings.energyLevel || '',
+    stress: state.ratings.stressLevel || 0,
+    focus: state.ratings.focusQuality || '',
+    studyTopics,
+    studyHours: document.getElementById('ci-study-hours').value,
+    studyQuality: document.getElementById('ci-study-quality').value,
+    habits,
+    win: document.getElementById('ci-win').value,
+    struggle: document.getElementById('ci-struggle').value,
+    notes: document.getElementById('ci-notes').value,
+    intention: document.getElementById('ci-intention').value,
+    dayRating: state.ratings.dayRating || 0,
   };
-  try{
-    const txt=await callGemini(prompts[type]||prompts.home);
-    const isGreen=type==='weekly'||type==='monthly';
-    box.innerHTML=`<div class="ai-box ${isGreen?'green':''}"><div class="ai-lbl">🤖 Gemini AI${type==='home'?' · today\'s plan':type==='weekly'?' · weekly review':type==='monthly'?' · monthly review':type==='upskill'?' · personalised upskill':' · platform'}</div><p>${txt.replace(/\n/g,'<br>').replace(/\*\*/g,'').replace(/\*/g,'')}</p></div>`;
-  }catch(e){
-    box.innerHTML='<div class="ai-box"><div class="ai-lbl">🤖 Offline suggestion</div><p>1. Do 20 NDA Maths MCQs — trigonometry focus.<br>2. Complete 1 TryHackMe room today.<br>3. Post on LinkedIn about your cybersecurity journey.</p></div>';
+
+  state.checkins.unshift(checkin);
+  saveState();
+  updateStreak();
+  renderRecentLogs();
+  showToast('✅ Check-in saved!');
+
+  // Auto-log workout if km entered
+  if (checkin.runKm) {
+    state.workouts.unshift({ date: checkin.date, type: '🏃 Run', km: checkin.runKm, mins: '', notes: '' });
+    saveState();
   }
-};
-
-// ── Navigation ────────────────────────────────────
-window.go=function(t){
-  TABS.forEach(x=>{const e=document.getElementById('tab-'+x);if(e)e.classList.remove('on');});
-  document.getElementById('tab-'+t)?.classList.add('on');
-  document.querySelectorAll('.nb').forEach((b,i)=>b.classList.toggle('on',TABS[i]===t));
-  document.querySelectorAll('.bnb').forEach(b=>b.classList.remove('on'));
-  const bmap={home:0,checkin:1,platforms:2,reports:3,settings:4};
-  if(bmap[t]!==undefined)document.querySelectorAll('.bnb')[bmap[t]]?.classList.add('on');
-  if(t==='platforms'){renderPlats();setTimeout(()=>fetchAI('plat'),600);}
-  if(t==='upskill'){renderUpskill();setTimeout(()=>fetchAI('upskill'),600);}
-  if(t==='reports')renderReports();
-  if(t==='fitness')renderFit();
-};
-
-function updateCountdowns(){
-  [['nda-h','2026-04-13'],['mid-h','2026-04-22'],['nda-e','2026-04-13'],['mid-e','2026-04-22'],['end-e','2026-05-25'],['ndas-e','2026-09-14']].forEach(([id,ds])=>{const el=document.getElementById(id);if(el)el.textContent=daysUntil(ds);});
 }
 
-// ── Check-in form state ───────────────────────────
-window.pick=function(el,key,val){
-  const row=el.parentElement;
-  row.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');ciState[key]=val;
-};
-window.pickMulti=function(el,key,val){
-  el.classList.toggle('on');
-  if(!Array.isArray(ciState[key]))ciState[key]=[];
-  if(el.classList.contains('on')){if(!ciState[key].includes(val))ciState[key].push(val);}
-  else ciState[key]=ciState[key].filter(v=>v!==val);
-};
-window.pickMood=function(el,val){
-  document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');ciState.mood=val;
-};
-window.setStars=function(type,n){
-  ciState[type+'Star']=n;
-  const row=document.getElementById(type+'-stars');
-  row.querySelectorAll('.star').forEach((s,i)=>s.classList.toggle('on',i<n));
-};
-window.toggleHabit=function(el){
-  el.classList.toggle('done');
-  const habit=el.dataset.habit;
-  const label=el.nextElementSibling;
-  label.classList.toggle('done',el.classList.contains('done'));
-  if(!Array.isArray(ciState.habits))ciState.habits=[];
-  if(el.classList.contains('done')){if(!ciState.habits.includes(habit))ciState.habits.push(habit);}
-  else ciState.habits=ciState.habits.filter(h=>h!==habit);
-};
-
-function resetCIForm(){
-  ciState={sq:'',wo:'',wn:'',body:'',diet:'',water:'',energy:'',stress:'',mood:'',focusStar:0,studyStar:0,dayStar:0,study:[],shrs:'',learn:'',win:'',struggle:'',notes:'',tmr:'',habits:[]};
-  document.querySelectorAll('#tab-checkin .cbtn').forEach(b=>b.classList.remove('on'));
-  document.querySelectorAll('#tab-checkin .mood-btn').forEach(b=>b.classList.remove('on'));
-  document.querySelectorAll('#tab-checkin .star').forEach(b=>b.classList.remove('on'));
-  document.querySelectorAll('#tab-checkin .cl-check').forEach(b=>{b.classList.remove('done');b.nextElementSibling?.classList.remove('done');});
-  ['ci-si','ci-so','ci-wn','ci-learn','ci-win','ci-struggle','ci-notes','ci-tmr'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
-}
-
-// ── Save check-in ─────────────────────────────────
-window.saveCI=async function(){
-  const entry={
-    sleepIn:document.getElementById('ci-si').value,
-    sleepOut:document.getElementById('ci-so').value,
-    sleepQuality:ciState.sq,
-    workout:ciState.wo,
-    workoutNotes:document.getElementById('ci-wn').value,
-    bodyFeeling:ciState.body,
-    diet:ciState.diet,
-    water:ciState.water,
-    energy:ciState.energy,
-    stress:ciState.stress,
-    mood:ciState.mood,
-    focusStar:ciState.focusStar,
-    studyStar:ciState.studyStar,
-    dayStar:ciState.dayStar,
-    study:ciState.study,
-    studyHours:ciState.shrs,
-    learn:document.getElementById('ci-learn').value,
-    win:document.getElementById('ci-win').value,
-    struggle:document.getElementById('ci-struggle').value,
-    notes:document.getElementById('ci-notes').value,
-    tomorrowGoal:document.getElementById('ci-tmr').value,
-    habits:ciState.habits,
-    createdAt:serverTimestamp(),
-  };
-  const hasData=entry.workout||entry.energy||entry.mood||entry.learn||entry.win||entry.notes||entry.study.length;
-  if(!hasData){showToast('Fill at least one field.');return;}
-  try{
-    await addDoc(collection(db,'users',uid,'checkins'),entry);
-    const pRef=doc(db,'users',uid,'profile','main');
-    const snap=await getDoc(pRef);
-    const ns=(snap.data()?.streak||1)+1;
-    await setDoc(pRef,{streak:ns},{merge:true});
-    showSync();showToast(`✓ Saved! Streak: ${ns} days 🔥`);
-    resetCIForm();
-    go('home');
-  }catch(e){showToast('Error: '+e.message);console.error(e);}
-};
-
-// ── Renders ───────────────────────────────────────
-function renderHome(){
-  document.getElementById('h-ci').textContent=S.checkins.length;
-  document.getElementById('h-gl').textContent=S.goals.length;
-  const now=new Date(),nm=now.getHours()*60+now.getMinutes();
-  const tc={nda:'tn',fit:'tf',acad:'ta',goal:'tg',plat:'tp'};
-  const up=S.reminders.filter(r=>{const[h,m]=r.time.split(':');return parseInt(h)*60+parseInt(m)>=nm;}).slice(0,5);
-  document.getElementById('home-rems').innerHTML=up.map(r=>`<div class="ri"><span class="rt">${r.time}</span><span class="rl">${r.label}</span><span class="rtag ${tc[r.cat]||'tg'}">${r.cat}</span></div>`).join('')||'<div style="font-size:13px;color:var(--green)">All done for today 🎉</div>';
-  const due=PLATFORMS.filter(p=>{const logs=S.platLogs.filter(l=>l.plat===p.name);return !logs.length||daysUntil(toDate(logs[0].createdAt))>0;}).slice(0,4);
-  document.getElementById('home-plats').innerHTML=due.map(p=>`<div class="ri"><span style="font-size:16px">${p.icon}</span><span class="rl">${p.name}</span><span class="rtag tp">Post today</span></div>`).join('')||'<div style="font-size:13px;color:var(--green)">All platforms updated ✓</div>';
-}
-
-function renderLog(){
-  const ll=document.getElementById('logList');
-  if(!S.checkins.length){ll.innerHTML='<div style="font-size:13px;color:var(--text2)">No logs yet.</div>';return;}
-  ll.innerHTML=S.checkins.slice(0,10).map((c,i)=>{
-    const d=toDate(c.createdAt);
-    const ds=d.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
-    const mood=['','😞','😕','😐','😊','🤩'][parseInt(c.mood)||0]||'';
-    const wo=c.workout||'–';
-    const cls=wo.includes('Gym')||wo.includes('Run')?'g':wo==='Skipped'?'r':'';
-    const stars=c.dayStar?'⭐'.repeat(c.dayStar):'';
-    const study=Array.isArray(c.study)?c.study.join(', '):c.study||'–';
-    return `<div class="rlog-item" onclick="toggleLog(this,${i})">
-      <div class="rlog-date">${ds} ${mood} ${stars}</div>
-      <div class="rlog-preview">${c.win||c.learn||c.notes||wo}</div>
-      <div class="rlog-tags">${[wo,study,c.energy].filter(Boolean).filter(v=>v!=='–').map(t=>`<span class="xtag">${t}</span>`).join('')}</div>
-      <div class="rlog-expanded" id="logexp-${i}">
-        ${c.sleepIn?`<b>Sleep:</b> ${c.sleepIn}–${c.sleepOut||'?'} (${c.sleepQuality||'–'})<br>`:''}
-        ${c.workout?`<b>Workout:</b> ${c.workout} ${c.workoutNotes?'— '+c.workoutNotes:''}<br>`:''}
-        ${c.bodyFeeling?`<b>Body:</b> ${c.bodyFeeling} | Diet: ${c.diet||'–'} | Water: ${c.water||'–'}<br>`:''}
-        ${c.mood?`<b>Mood:</b> ${mood}${c.mood}/5 | Energy: ${c.energy||'–'} | Stress: ${c.stress||'–'}<br>`:''}
-        ${study!=='–'?`<b>Studied:</b> ${study} (${c.studyHours||'–'})<br>`:''}
-        ${c.learn?`<b>Learned:</b> ${c.learn}<br>`:''}
-        ${c.win?`<b>Win:</b> ${c.win}<br>`:''}
-        ${c.struggle?`<b>Struggle:</b> ${c.struggle}<br>`:''}
-        ${c.notes?`<b>Notes:</b> ${c.notes}<br>`:''}
-        ${c.tomorrowGoal?`<b>Tomorrow:</b> ${c.tomorrowGoal}<br>`:''}
-        ${c.habits?.length?`<b>Habits done:</b> ${c.habits.join(', ')}<br>`:''}
+function renderRecentLogs() {
+  const el = document.getElementById('recentLogs');
+  if (!state.checkins.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">📝</div><p>No check-ins yet. Log your first day!</p></div>'; return; }
+  el.innerHTML = state.checkins.slice(0, 15).map(c => {
+    const energy = c.energy || 'No data';
+    const mood = c.moodEmoji || '—';
+    const topics = c.studyTopics?.join(', ') || '—';
+    return `<div class="log-item" onclick="this.classList.toggle('open')">
+      <div class="log-item-header">
+        <div style="display:flex;align-items:center">
+          <div class="log-dot" style="background:${energyColor(c.energy)}"></div>
+          <span class="log-date">${formatDate(c.date)} · ${mood} ${c.energy || ''}</span>
+        </div>
+        <span style="font-size:12px;color:var(--text3)">${c.dayRating ? '⭐'.repeat(c.dayRating) : ''}</span>
+      </div>
+      <div class="log-summary">${c.workout || 'No workout'} · ${c.studyHours || '0'}h study · ${topics.substring(0,40)}${topics.length > 40 ? '...' : ''}</div>
+      <div class="log-detail">
+        <b>Sleep:</b> ${c.sleepIn || '--'} → ${c.sleepOut || '--'} (${c.sleepQuality || '--'})<br>
+        <b>Body:</b> ${c.bodyFeeling || '--'} · Water: ${c.water || '--'} glasses · Diet: ${c.diet || '--'}<br>
+        <b>Mood:</b> ${c.moodEmoji || ''} ${c.mood || '--'} · Stress: ${'😰'.repeat(c.stress || 0)}<br>
+        <b>Focus:</b> ${c.focus || '--'}<br>
+        <b>Study:</b> ${c.studyHours || 0}h · ${topics} · ${c.studyQuality || '--'}<br>
+        <b>Habits:</b> ${c.habits?.join(', ') || 'None'}<br>
+        <b>Win:</b> ${c.win || '--'}<br>
+        <b>Struggle:</b> ${c.struggle || '--'}<br>
+        <b>Notes:</b> ${c.notes || '--'}<br>
+        <b>Tomorrow:</b> ${c.intention || '--'}
       </div>
     </div>`;
   }).join('');
 }
 
-window.toggleLog=function(el,i){
-  const exp=document.getElementById('logexp-'+i);
-  if(exp)exp.style.display=exp.style.display==='block'?'none':'block';
-};
-
-function renderRems(){
-  const tc={nda:'tn',fit:'tf',acad:'ta',goal:'tg',plat:'tp'};
-  document.getElementById('remList').innerHTML=S.reminders.map(r=>`<div class="ri"><span class="rt">${r.time}</span><span class="rl">${r.label}</span><span class="rtag ${tc[r.cat]||'tg'}">${r.cat}</span><button class="rdel" onclick="delRem('${r.id}')">×</button></div>`).join('')||'<div style="font-size:13px;color:var(--text2)">No reminders.</div>';
+function energyColor(e) {
+  if (e === 'High') return '#16A34A';
+  if (e === 'Medium') return '#CA8A04';
+  if (e === 'Low') return '#DC2626';
+  return '#9CA3AF';
 }
 
-function renderGoals(){
-  const cls=['','g','a'];
-  document.getElementById('goalList').innerHTML=S.goals.map((g,i)=>`
-    <div class="gi">
-      <div class="ginfo">
-        <div class="gname">${g.name}</div>
-        <div class="gsub">${g.cat} · ${g.date||'TBD'}${g.note?` · ${g.note}`:''}</div>
-        <div class="pbar"><div class="pfill ${cls[i%3]}" style="width:${g.pct||0}%"></div></div>
+// ============================================================
+// GOALS
+// ============================================================
+function openGoalModal() { document.getElementById('goalModal').classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function saveGoal() {
+  const title = document.getElementById('goal-title').value.trim();
+  if (!title) { showToast('Enter a goal title'); return; }
+  state.goals.push({
+    id: Date.now(),
+    title,
+    category: document.getElementById('goal-cat').value,
+    date: document.getElementById('goal-date').value,
+    progress: parseInt(document.getElementById('goal-progress').value) || 0,
+    desc: document.getElementById('goal-desc').value,
+    created: new Date().toISOString()
+  });
+  saveState();
+  renderGoals();
+  closeModal('goalModal');
+  document.getElementById('goal-title').value = '';
+  showToast('🎯 Goal saved!');
+}
+
+function deleteGoal(id) {
+  state.goals = state.goals.filter(g => g.id !== id);
+  saveState();
+  renderGoals();
+  showToast('Goal deleted');
+}
+
+function renderGoals() {
+  document.getElementById('statGoals').textContent = state.goals.length;
+  const el = document.getElementById('goalsList');
+  if (!state.goals.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🎯</div><p>No goals yet. Add your first goal!</p></div>'; return; }
+  el.innerHTML = state.goals.map(g => {
+    const daysLeft = g.date ? Math.ceil((new Date(g.date) - new Date()) / 86400000) : null;
+    return `<div class="goal-card">
+      <div class="goal-header">
+        <div>
+          <div class="goal-title">${g.title}</div>
+          <span class="goal-category badge badge-blue">${g.category}</span>
+        </div>
+        <button onclick="deleteGoal(${g.id})" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px">🗑</button>
       </div>
-      <div class="gpct">${g.pct||0}%</div>
-      <button class="gdel" onclick="delGoal('${g.id}')" title="Delete goal">🗑</button>
-    </div>`).join('')||'<div style="font-size:13px;color:var(--text2)">No goals yet.</div>';
-}
-
-function renderExams(){
-  const slbl={sdone:'Done',sprog:'In progress',stodo:'Not started'};
-  document.getElementById('ndaSubj').innerHTML=NDA_SUBJECTS.map(s=>`<div class="srow"><span style="font-size:13px">${s.n}</span><span class="sstatus ${s.s}" onclick="cycleStatus(this)">${slbl[s.s]}</span></div>`).join('');
-  document.getElementById('midSubj').innerHTML=MID_SUBJECTS.map(s=>`<div class="srow"><span style="font-size:13px">${s.n}</span><span class="sstatus ${s.s}" onclick="cycleStatus(this)">${slbl[s.s]}</span></div>`).join('');
-}
-
-function renderFit(){
-  const now=Date.now();
-  const wk7=S.workouts.filter(w=>(now-toDate(w.createdAt).getTime())<7*86400000);
-  document.getElementById('fw-run').textContent=wk7.filter(w=>w.type==='Run'||w.type==='Run + Gym').length;
-  document.getElementById('fw-gym').textContent=wk7.filter(w=>w.type==='Gym'||w.type==='Run + Gym').length;
-  const today=(new Date().getDay()+6)%7,days7=[0,0,0,0,0,0,0];
-  wk7.forEach(w=>{if(w.type!=='Rest day'){const d=toDate(w.createdAt);days7[(d.getDay()+6)%7]=1;}});
-  document.getElementById('wkbars').innerHTML=days7.map((v,i)=>`<div class="wbar${i===today?' td':''}" style="height:${v?42:12}px"></div>`).join('');
-}
-
-function renderPlats(){
-  document.getElementById('platList').innerHTML=PLATFORMS.map(p=>{
-    const logs=S.platLogs.filter(l=>l.plat===p.name);
-    const last=logs.length?toDate(logs[0].createdAt):null;
-    const isDue=!last||daysUntil(last)>0;
-    const lastStr=last?'Last: '+last.toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'Never posted';
-    return `<div class="plat-item">
-      <div class="plat-icon" style="background:${p.color}22">${p.icon}</div>
-      <div class="plat-info"><div class="plat-name">${p.name}</div><div class="plat-last">${lastStr} · ${p.freq}</div></div>
-      <button class="plat-btn ${isDue?'due':'done'}" onclick="quickLog('${p.name}')">${isDue?'✓ Mark done':'Done ✓'}</button>
+      ${g.desc ? `<p style="font-size:13px;color:var(--text2);margin-bottom:8px">${g.desc}</p>` : ''}
+      <div class="progress-bar"><div class="progress-fill" style="width:${g.progress}%"></div></div>
+      <div class="goal-meta">
+        <span>${g.progress}% complete</span>
+        <span>${daysLeft !== null ? (daysLeft > 0 ? daysLeft + ' days left' : 'Overdue!') : (g.date || 'No deadline')}</span>
+      </div>
     </div>`;
   }).join('');
 }
 
-function renderUpskill(){
-  document.getElementById('upskill-list').innerHTML=UPSKILL_ITEMS.map(u=>`
-    <div class="upskill-item">
-      <div class="up-icon" style="background:${u.bg}">${u.icon}</div>
-      <div><div class="up-title">${u.title}</div><div class="up-desc">${u.desc}</div></div>
-    </div>`).join('');
-  document.getElementById('resources-list').innerHTML=RESOURCES.map(r=>`
-    <div class="upskill-item">
-      <div class="up-icon" style="background:${r.bg}">${r.icon}</div>
-      <div><div class="up-title">${r.title}</div><div class="up-desc">${r.desc}</div><div class="up-action"><a href="${r.url}" target="_blank" style="color:var(--blue);text-decoration:none">Open →</a></div></div>
-    </div>`).join('');
+// ============================================================
+// ROADMAP
+// ============================================================
+function renderRoadmap() {
+  const ndaSteps = [
+    { title: 'Complete NDA Math Syllabus', desc: 'Algebra, Trigonometry, Calculus, Matrices, Statistics', status: 'pending' },
+    { title: 'Complete NDA GK Syllabus', desc: 'History, Geography, Physics, Chemistry, Biology', status: 'pending' },
+    { title: 'Solve Previous Year Papers', desc: 'Last 10 years papers, timed practice', status: 'pending' },
+    { title: 'Mock Tests (Weekly)', desc: '2-3 full mock tests per week in exam conditions', status: 'pending' },
+    { title: 'Final Revision', desc: 'Quick revision of all formulas and key concepts', status: 'pending' },
+  ];
+  const cyberSteps = [
+    { title: 'TryHackMe Pre-Security Path', desc: 'Network fundamentals, Linux basics, Web basics', status: 'pending' },
+    { title: 'TryHackMe SOC Level 1', desc: 'SIEM, IDS, threat intelligence, incident response', status: 'pending' },
+    { title: 'eJPT Certification', desc: 'Junior Penetration Tester - practical exam', status: 'pending' },
+    { title: 'Kaggle + ML Basics', desc: 'Python ML, supervised learning, real datasets', status: 'pending' },
+    { title: 'AWS Cloud Practitioner', desc: 'Cloud fundamentals, core services, certification', status: 'pending' },
+  ];
+  const careerSteps = [
+    { title: 'Build LinkedIn Profile', desc: 'Professional photo, bio, projects, endorsements', status: 'pending' },
+    { title: 'LeetCode 100 Problems', desc: 'Easy: 60, Medium: 35, Hard: 5 — all core topics', status: 'pending' },
+    { title: 'Build 2 Projects', desc: 'Cybersecurity tool + ML project for portfolio', status: 'pending' },
+    { title: 'GitHub Portfolio', desc: '10+ repos, regular commits, README on all projects', status: 'pending' },
+    { title: 'Internship Applications', desc: 'Apply to 20+ internships in cybersec/ML fields', status: 'pending' },
+  ];
+
+  function renderSteps(steps, containerId) {
+    document.getElementById(containerId).innerHTML = steps.map((s, i) => `
+      <div class="roadmap-item">
+        <div class="roadmap-num ${s.status}">${i + 1}</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">${s.title}</div>
+          <div class="roadmap-desc">${s.desc}</div>
+        </div>
+      </div>`).join('');
+  }
+  renderSteps(ndaSteps, 'roadmapNDA');
+  renderSteps(cyberSteps, 'roadmapCyber');
+  renderSteps(careerSteps, 'roadmapCareer');
 }
 
-function renderReports(){
-  const now=Date.now(),wAgo=now-7*86400000;
-  const mStart=new Date();mStart.setDate(1);mStart.setHours(0,0,0,0);
-  const ts=c=>toDate(c.createdAt).getTime();
-  const wCi=S.checkins.filter(c=>ts(c)>=wAgo);
-  const wWo=S.workouts.filter(w=>ts(w)>=wAgo&&w.type!=='Rest day');
-  const wSt=wCi.filter(c=>c.study?.length||c.studyHours).length;
-  const moods=wCi.map(c=>parseInt(c.mood)).filter(Boolean);
-  const avgM=moods.length?Math.round(moods.reduce((a,b)=>a+b,0)/moods.length):0;
-  document.getElementById('rw-ci').textContent=wCi.length;
-  document.getElementById('rw-wo').textContent=wWo.length;
-  document.getElementById('rw-st').textContent=wSt;
-  document.getElementById('rw-en').textContent=avgM?['','😞','😕','😐','😊','🤩'][avgM]+''+avgM:'–';
-  const mCi=S.checkins.filter(c=>ts(c)>=mStart.getTime());
-  const mWo=S.workouts.filter(w=>ts(w)>=mStart.getTime());
-  const mPl=S.platLogs.filter(l=>ts(l)>=mStart.getTime());
-  document.getElementById('rm-ci').textContent=mCi.length;
-  document.getElementById('rm-wo').textContent=mWo.length;
-  document.getElementById('rm-gl').textContent=S.goals.length;
-  document.getElementById('rm-pl').textContent=mPl.length;
-  searchLogs();
+async function generateRoadmap() {
+  const btn = document.querySelector('#page-roadmap .btn-primary');
+  btn.disabled = true; btn.textContent = '⏳ Generating...';
+  const recent = state.checkins.slice(0,5);
+  const context = recent.map(c => `${c.date}: energy=${c.energy}, study=${c.studyTopics?.join(',')}, hours=${c.studyHours}h, win="${c.win}", struggle="${c.struggle}"`).join('\n');
+  const prompt = `You are a personal AI coach for Aryash. Based on recent check-ins:
+${context || 'No check-ins yet'}
+Goals: ${state.goals.map(g => g.title).join(', ') || 'NDA Preparation, Cybersecurity, Fitness'}
+Give a 3-4 sentence daily roadmap update: what to focus on today/this week, what patterns you notice, and one specific action to take. Be direct and motivating.`;
+  const response = await callGemini(prompt);
+  document.getElementById('roadmapAIText').textContent = response;
+  btn.disabled = false; btn.textContent = '🤖 AI Update';
 }
 
-window.searchLogs=function(){
-  const q=(document.getElementById('srch-d')?.value||'').toLowerCase();
-  const logs=S.checkins.filter(c=>{
-    const s=(c.workout+c.energy+c.mood+c.learn+c.win+c.struggle+c.notes+(Array.isArray(c.study)?c.study.join(' '):c.study||'')).toLowerCase();
-    return !q||s.includes(q);
-  });
-  document.getElementById('daily-logs').innerHTML=logs.slice(0,30).map((c,i)=>{
-    const d=toDate(c.createdAt);
-    const ds=d.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
-    const mood=['','😞','😕','😐','😊','🤩'][parseInt(c.mood)||0]||'';
-    const stars=c.dayStar?'⭐'.repeat(c.dayStar):'';
-    const tags=[c.workout,Array.isArray(c.study)?c.study[0]:c.study,c.energy].filter(Boolean).filter(v=>v&&v!=='–');
-    return `<div class="rlog-item" onclick="toggleLog(this,${i})">
-      <div class="rlog-date">${ds} ${mood} ${stars}</div>
-      <div class="rlog-preview">${c.win||c.learn||c.notes||c.workout||'Check-in logged'}</div>
-      <div class="rlog-tags">${tags.map(t=>`<span class="xtag">${t}</span>`).join('')}</div>
-      <div class="rlog-expanded" id="logexp-r${i}">
-        ${c.win?`<b>Win:</b> ${c.win}<br>`:''}
-        ${c.struggle?`<b>Struggle:</b> ${c.struggle}<br>`:''}
-        ${c.learn?`<b>Learned:</b> ${c.learn}<br>`:''}
-        ${c.notes?`<b>Notes:</b> ${c.notes}<br>`:''}
-        ${c.tomorrowGoal?`<b>Tomorrow:</b> ${c.tomorrowGoal}<br>`:''}
+// ============================================================
+// PLATFORMS
+// ============================================================
+function renderPlatforms() {
+  const el = document.getElementById('platformsList');
+  const today = new Date().toISOString().split('T')[0];
+  el.innerHTML = state.platforms.map(p => {
+    const doneToday = p.lastPosted === today;
+    return `<div class="platform-item">
+      <div class="platform-icon">${p.icon}</div>
+      <div class="platform-info">
+        <div class="platform-name">${p.name}</div>
+        <div class="platform-last">${p.freq} · Last: ${p.lastPosted ? formatDate(p.lastPosted) : 'Never'}</div>
       </div>
+      <button class="platform-check-btn ${doneToday ? 'done' : ''}" onclick="markPlatform('${p.id}')">
+        ${doneToday ? '✅ Done' : 'Mark Done'}
+      </button>
     </div>`;
-  }).join('')||'<div style="font-size:13px;color:var(--text2);padding:8px 0">No logs found.</div>';
-};
+  }).join('');
 
-window.cycleStatus=function(el){
-  const order=['stodo','sprog','sdone'],labels={stodo:'Not started',sprog:'In progress',sdone:'Done'};
-  const curr=order.findIndex(c=>el.classList.contains(c)),next=order[(curr+1)%3];
-  order.forEach(c=>el.classList.remove(c));el.classList.add(next);el.textContent=labels[next];
-};
+  // Home platforms
+  const homeEl = document.getElementById('homePlatforms');
+  if (homeEl) {
+    homeEl.innerHTML = state.platforms.map(p => {
+      const doneToday = p.lastPosted === today;
+      return `<div class="platform-item" style="margin-bottom:6px">
+        <div class="platform-icon">${p.icon}</div>
+        <div class="platform-info"><div class="platform-name">${p.name}</div></div>
+        <button class="platform-check-btn ${doneToday ? 'done' : ''}" onclick="markPlatform('${p.id}');renderHome()">
+          ${doneToday ? '✅' : 'Post'}
+        </button>
+      </div>`;
+    }).join('');
+  }
+}
 
-// ── Actions ───────────────────────────────────────
-window.addRem=async function(){
-  const label=document.getElementById('rem-lbl').value.trim(),time=document.getElementById('rem-t').value,cat=document.getElementById('rem-c').value;
-  if(!label||!time){showToast('Enter label and time.');return;}
-  await addDoc(collection(db,'users',uid,'reminders'),{time,label,cat});
-  showSync();showToast('Reminder added!');
-  document.getElementById('rem-lbl').value='';document.getElementById('rem-t').value='';
-};
-window.delRem=async function(id){
-  if(!id||!confirm('Delete this reminder?'))return;
-  await deleteDoc(doc(db,'users',uid,'reminders',id));showToast('Deleted.');
-};
+function markPlatform(id) {
+  const p = state.platforms.find(p => p.id === id);
+  if (p) { p.lastPosted = new Date().toISOString().split('T')[0]; saveState(); renderPlatforms(); showToast('✅ ' + p.name + ' marked!'); }
+}
 
-window.addGoal=async function(){
-  const name=document.getElementById('g-nm').value.trim(),cat=document.getElementById('g-cat').value,date=document.getElementById('g-dt').value,pct=parseInt(document.getElementById('g-pct').value)||0,note=document.getElementById('g-note').value.trim();
-  if(!name){showToast('Enter goal name.');return;}
-  const existing=S.goals.find(g=>g.name.toLowerCase()===name.toLowerCase());
-  if(existing?.id){await setDoc(doc(db,'users',uid,'goals',existing.id),{name,cat,date:date||existing.date,pct,note,updatedAt:serverTimestamp()},{merge:true});showToast('Goal updated!');}
-  else{await addDoc(collection(db,'users',uid,'goals'),{name,cat,date:date||'TBD',pct,note,createdAt:serverTimestamp()});showToast('Goal added!');}
-  showSync();
-  ['g-nm','g-dt','g-pct','g-note'].forEach(id=>document.getElementById(id).value='');
-};
-window.delGoal=async function(id){
-  if(!id||!confirm('Delete this goal?'))return;
-  await deleteDoc(doc(db,'users',uid,'goals',id));showToast('Goal deleted.');showSync();
-};
+// ============================================================
+// FITNESS
+// ============================================================
+function logWorkout() {
+  const w = {
+    id: Date.now(),
+    date: new Date().toISOString().split('T')[0],
+    type: document.getElementById('fit-type').value,
+    km: document.getElementById('fit-km').value,
+    mins: document.getElementById('fit-mins').value,
+    notes: document.getElementById('fit-notes').value
+  };
+  state.workouts.unshift(w);
+  saveState();
+  renderFitness();
+  showToast('💪 Workout logged!');
+}
 
-window.logWorkout=async function(){
-  const type=document.getElementById('wt').value,notes=document.getElementById('wn').value;
-  await addDoc(collection(db,'users',uid,'workouts'),{type,notes,createdAt:serverTimestamp()});
-  if(type!=='Rest day'){const pRef=doc(db,'users',uid,'profile','main');const snap=await getDoc(pRef);await setDoc(pRef,{streak:(snap.data()?.streak||1)+1},{merge:true});}
-  showSync();showToast('Workout logged!');document.getElementById('wn').value='';
-};
+function renderFitness() {
+  const runs = state.workouts.filter(w => w.type.includes('Run'));
+  const totalKm = runs.reduce((s, w) => s + parseFloat(w.km || 0), 0);
+  document.getElementById('fitnessStreak').textContent = calcStreak();
+  document.getElementById('totalRuns').textContent = runs.length;
+  document.getElementById('totalKm').textContent = totalKm.toFixed(1);
+  const el = document.getElementById('workoutLog');
+  if (!state.workouts.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏃</div><p>No workouts logged yet</p></div>'; return; }
+  el.innerHTML = state.workouts.slice(0, 20).map(w => `
+    <div class="log-item">
+      <div class="log-date">${w.type} · ${formatDate(w.date)}</div>
+      <div class="log-summary">${w.km ? w.km + 'km' : ''} ${w.mins ? w.mins + 'min' : ''} ${w.notes || ''}</div>
+    </div>`).join('');
+}
 
-window.quickLog=async function(nm){
-  await addDoc(collection(db,'users',uid,'platLogs'),{plat:nm,act:'Marked done',createdAt:serverTimestamp()});
-  showSync();showToast(`${nm} ✓`);
-};
-window.logPlat=async function(){
-  const nm=document.getElementById('pl-nm').value,act=document.getElementById('pl-act').value.trim();
-  await addDoc(collection(db,'users',uid,'platLogs'),{plat:nm,act:act||'Activity logged',createdAt:serverTimestamp()});
-  showSync();showToast(`${nm} logged!`);document.getElementById('pl-act').value='';
-};
-
-window.switchRep=function(type,btn){
-  repMode=type;
-  document.querySelectorAll('.rtab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
-  ['daily','weekly','monthly'].forEach(x=>document.getElementById('rep-'+x).classList.toggle('on',x===type));
+// ============================================================
+// REPORTS
+// ============================================================
+function setReport(type, btn) {
+  state.currentReport = type;
+  document.querySelectorAll('.report-period-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
   renderReports();
-  if(type==='weekly')fetchAI('weekly');
-  if(type==='monthly')fetchAI('monthly');
-};
+}
 
-// ── Notifications ─────────────────────────────────
-window.toggleNotifs=function(){
-  const o=document.getElementById('notifOverlay');o.classList.toggle('open');
-  document.getElementById('ndot').style.display='none';
-  if(o.classList.contains('open')){
-    const items=[
-      ...S.reminders.slice(0,5).map(r=>({icon:'⏰',msg:`${r.time} – ${r.label}`,time:'scheduled'})),
-      {icon:'☁️',msg:'All data synced to Firebase cloud.',time:'always on'},
-      {icon:'🔥',msg:`Streak: ${S.streak} days. Keep it up!`,time:'today'},
-    ];
-    document.getElementById('notifList').innerHTML=items.map(n=>`<div class="nitem"><span class="nicon">${n.icon}</span><div><div class="nmsg">${n.msg}</div><div class="ntime">${n.time}</div></div></div>`).join('');
+function renderReports() {
+  const el = document.getElementById('reportContent');
+  const checkins = state.checkins;
+  if (!checkins.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">📊</div><p>No data yet. Start checking in daily!</p></div>'; return; }
+
+  let filtered = checkins;
+  const now = new Date();
+  if (state.currentReport === 'daily') filtered = checkins.slice(0, 30);
+  if (state.currentReport === 'weekly') {
+    const weekAgo = new Date(now - 7 * 86400000);
+    filtered = checkins.filter(c => new Date(c.date) >= weekAgo);
   }
-};
-window.requestNotifPerm=async function(){
-  if(!('Notification' in window)){showToast('Not supported.');return;}
-  const p=await Notification.requestPermission();
-  if(p==='granted'){scheduleReminders();showToast('Reminders enabled ✓');}
-  else showToast('Permission denied.');
-};
-function scheduleReminders(){
-  if(Notification?.permission!=='granted')return;
-  const now=new Date();
-  S.reminders.forEach(r=>{
-    const[h,m]=r.time.split(':').map(Number);
-    const t=new Date();t.setHours(h,m,0,0);
-    const diff=t-now;
-    if(diff>0&&diff<86400000)setTimeout(()=>new Notification('Aryash Hub – '+r.label,{body:r.time}),diff);
+  if (state.currentReport === 'monthly') {
+    const monthAgo = new Date(now - 30 * 86400000);
+    filtered = checkins.filter(c => new Date(c.date) >= monthAgo);
+  }
+
+  if (state.currentReport !== 'daily') {
+    const avgEnergy = filtered.filter(c => c.energy).length;
+    const totalStudy = filtered.reduce((s, c) => s + parseFloat(c.studyHours || 0), 0);
+    const avgDay = filtered.reduce((s, c) => s + (c.dayRating || 0), 0) / (filtered.length || 1);
+    el.innerHTML = `
+      <div class="card">
+        <div class="card-title">📊 Summary</div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-num">${filtered.length}</div><div class="stat-label">Days Logged</div></div>
+          <div class="stat-card"><div class="stat-num">${totalStudy.toFixed(0)}h</div><div class="stat-label">Study Hours</div></div>
+          <div class="stat-card"><div class="stat-num">${avgDay.toFixed(1)}⭐</div><div class="stat-label">Avg Day</div></div>
+        </div>
+      </div>` +
+      filtered.map(c => `<div class="log-item" onclick="this.classList.toggle('open')">
+        <div class="log-date">${formatDate(c.date)} ${c.moodEmoji || ''}</div>
+        <div class="log-summary">${c.energy || ''} energy · ${c.studyHours || 0}h study · ${c.studyTopics?.slice(0,2).join(', ') || ''}</div>
+        <div class="log-detail">
+          <b>Win:</b> ${c.win || '--'}<br>
+          <b>Struggle:</b> ${c.struggle || '--'}<br>
+          <b>Notes:</b> ${c.notes || '--'}<br>
+          <b>Habits:</b> ${c.habits?.join(', ') || 'None'}
+        </div>
+      </div>`).join('');
+  } else {
+    el.innerHTML = filtered.map(c => `<div class="log-item" onclick="this.classList.toggle('open')">
+      <div class="log-item-header">
+        <div style="display:flex;align-items:center">
+          <div class="log-dot" style="background:${energyColor(c.energy)}"></div>
+          <span class="log-date">${formatDate(c.date)} ${c.moodEmoji || ''}</span>
+        </div>
+        <span>${c.dayRating ? '⭐'.repeat(c.dayRating) : ''}</span>
+      </div>
+      <div class="log-summary">${c.energy || ''} · ${c.studyHours || 0}h · ${c.workout || 'no workout'}</div>
+      <div class="log-detail">
+        <b>Sleep:</b> ${c.sleepIn || '--'} → ${c.sleepOut || '--'}<br>
+        <b>Study:</b> ${c.studyTopics?.join(', ') || '--'}<br>
+        <b>Win:</b> ${c.win || '--'}<br>
+        <b>Struggle:</b> ${c.struggle || '--'}<br>
+        <b>Notes:</b> ${c.notes || '--'}
+      </div>
+    </div>`).join('');
+  }
+}
+
+function searchReports() {
+  const q = document.getElementById('reportSearch').value.toLowerCase();
+  if (!q) { renderReports(); return; }
+  const filtered = state.checkins.filter(c =>
+    (c.notes || '').toLowerCase().includes(q) ||
+    (c.win || '').toLowerCase().includes(q) ||
+    (c.struggle || '').toLowerCase().includes(q) ||
+    (c.studyTopics || []).join(' ').toLowerCase().includes(q) ||
+    (c.date || '').includes(q)
+  );
+  const el = document.getElementById('reportContent');
+  el.innerHTML = `<p style="font-size:13px;color:var(--text3);margin-bottom:8px">${filtered.length} result(s) for "${q}"</p>` +
+    filtered.map(c => `<div class="log-item" onclick="this.classList.toggle('open')">
+      <div class="log-date">${formatDate(c.date)} ${c.moodEmoji || ''}</div>
+      <div class="log-summary">${c.energy || ''} · ${c.studyHours || 0}h study</div>
+      <div class="log-detail"><b>Win:</b> ${c.win || '--'}<br><b>Struggle:</b> ${c.struggle || '--'}<br><b>Notes:</b> ${c.notes || '--'}</div>
+    </div>`).join('');
+}
+
+// ============================================================
+// REMINDERS
+// ============================================================
+function openNotifModal() {
+  renderReminders();
+  document.getElementById('notifModal').classList.add('open');
+}
+
+function addReminder() {
+  const time = document.getElementById('notif-time').value;
+  const title = document.getElementById('notif-title').value.trim();
+  if (!time || !title) { showToast('Enter time and title'); return; }
+  state.reminders.push({ id: Date.now(), time, title, cat: document.getElementById('notif-cat').value });
+  state.reminders.sort((a, b) => a.time.localeCompare(b.time));
+  saveState();
+  renderReminders();
+  showToast('🔔 Reminder added!');
+}
+
+function deleteReminder(id) {
+  state.reminders = state.reminders.filter(r => r.id !== id);
+  saveState();
+  renderReminders();
+}
+
+function renderReminders() {
+  const el = document.getElementById('notifList');
+  if (!state.reminders.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🔔</div><p>No reminders yet</p></div>'; return; }
+  el.innerHTML = state.reminders.map(r => `
+    <div class="reminder-item">
+      <div class="reminder-time">${r.time}</div>
+      <div class="reminder-info">
+        <div class="reminder-title">${r.title}</div>
+        <div class="reminder-tag">${r.cat}</div>
+      </div>
+      <button class="reminder-delete" onclick="deleteReminder(${r.id})">×</button>
+    </div>`).join('');
+}
+
+// ============================================================
+// HOME
+// ============================================================
+function renderHome() {
+  document.getElementById('statCheckins').textContent = state.checkins.length;
+  document.getElementById('statGoals').textContent = state.goals.length;
+  updateStreak();
+  renderPlatforms();
+  calcCountdowns();
+}
+
+function calcCountdowns() {
+  const now = new Date(); now.setHours(0,0,0,0);
+  const dates = {
+    cdNDA: new Date('2026-04-13'),
+    cdMid: new Date('2026-04-22'),
+    cdEnd: new Date('2026-06-15'),
+    cdNDA2: new Date('2026-09-06'),
+  };
+  Object.entries(dates).forEach(([id, d]) => {
+    const el = document.getElementById(id);
+    if (el) { const diff = Math.ceil((d - now) / 86400000); el.textContent = diff > 0 ? diff : '0'; }
   });
 }
 
-// ── Export ────────────────────────────────────────
-window.exportData=function(){
-  const data={exportDate:new Date().toISOString(),streak:S.streak,checkins:S.checkins,goals:S.goals,reminders:S.reminders,workouts:S.workouts,platLogs:S.platLogs};
-  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download=`aryash-hub-${new Date().toISOString().split('T')[0]}.json`;a.click();
-  URL.revokeObjectURL(url);showToast('Backup downloaded!');
-};
+async function loadHomeSuggestion() {
+  document.getElementById('homeSuggestionText').innerHTML = '<div class="ai-loading"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div><span style="font-size:13px;color:var(--text3);margin-left:4px">Generating...</span></div>';
+  const recent = state.checkins.slice(0, 3);
+  const context = recent.map(c => `${c.date}: energy=${c.energy}, mood=${c.mood}, study=${c.studyTopics?.join(',')}, hours=${c.studyHours}h, win="${c.win}", struggle="${c.struggle}"`).join('\n');
+  const prompt = `You are Aryash's personal AI coach. Based on his recent check-ins:
+${context || 'No check-ins yet — this is likely his first day.'}
+Goals: NDA April 2026 (${document.getElementById('cdNDA')?.textContent || '?'} days away), cybersecurity, fitness marathon.
+Give ONE specific, actionable suggestion for today. 2-3 sentences max. Be direct, motivating, personal.`;
+  const text = await callGemini(prompt);
+  document.getElementById('homeSuggestionText').textContent = text;
+}
+
+// ============================================================
+// AI CHATBOT
+// ============================================================
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  document.getElementById('sendBtn').disabled = true;
+  appendMsg('user', msg);
+
+  // Build context from check-ins
+  const recent = state.checkins.slice(0, 5);
+  const context = recent.map(c => `Date: ${c.date}, Energy: ${c.energy}, Mood: ${c.mood}, Study: ${c.studyTopics?.join(',')}, Hours: ${c.studyHours}h, Win: "${c.win}", Struggle: "${c.struggle}", Notes: "${c.notes}"`).join('\n');
+  const goals = state.goals.map(g => `${g.title} (${g.progress}% done, ${g.category})`).join(', ');
+  const platforms = state.platforms.map(p => `${p.name}: last=${p.lastPosted || 'never'}`).join(', ');
+
+  const systemContext = `You are Aryash's personal AI life coach. You know everything about him:
+- Goals: ${goals || 'NDA Preparation, Cybersecurity, Fitness'}
+- Recent check-ins:\n${context || 'No check-ins yet'}
+- Platform tracking: ${platforms}
+- Streak: ${calcStreak()} days
+Be personal, direct, and genuinely helpful. Use his name. Give specific advice based on his actual data. Keep responses concise but impactful. You can help with study plans, motivation, health, career, or just listen.`;
+
+  // Add typing indicator
+  const typingId = 'typing-' + Date.now();
+  document.getElementById('chatMessages').insertAdjacentHTML('beforeend', `
+    <div class="msg ai" id="${typingId}">
+      <div class="msg-avatar">AI</div>
+      <div class="msg-bubble">
+        <div class="typing-indicator">
+          <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+        </div>
+      </div>
+    </div>`);
+  scrollChat();
+
+  const response = await callGemini(systemContext + '\n\nUser: ' + msg);
+  document.getElementById(typingId)?.remove();
+  appendMsg('ai', response);
+  state.chatHistory.push({ role: 'user', content: msg }, { role: 'ai', content: response });
+  saveState();
+  document.getElementById('sendBtn').disabled = false;
+}
+
+function quickPrompt(text) {
+  document.getElementById('chatInput').value = text;
+  sendChat();
+}
+
+function appendMsg(role, text) {
+  const time = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+  const html = `<div class="msg ${role}">
+    <div class="msg-avatar">${role === 'ai' ? 'AI' : 'A'}</div>
+    <div>
+      <div class="msg-bubble">${text.replace(/\n/g, '<br>')}</div>
+      <div class="msg-time">${time}</div>
+    </div>
+  </div>`;
+  document.getElementById('chatMessages').insertAdjacentHTML('beforeend', html);
+  scrollChat();
+}
+
+function scrollChat() {
+  const c = document.getElementById('chatMessages');
+  setTimeout(() => { c.scrollTop = c.scrollHeight; }, 50);
+}
+
+// ============================================================
+// GEMINI API
+// ============================================================
+async function callGemini(prompt) {
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { maxOutputTokens: 500, temperature: 0.8 } })
+    });
+    const data = await res.json();
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || 'AI is taking a moment — try again!';
+  } catch (e) {
+    return 'Could not reach AI right now. Check your connection and try again.';
+  }
+}
+
+// ============================================================
+// UTILS
+// ============================================================
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+window.addEventListener('load', () => {
+  loadState();
+  initHeader();
+  renderHome();
+  loadHomeSuggestion();
+  calcCountdowns();
+
+  // Request notifications
+  if ('Notification' in window && Notification.permission === 'default') {
+    setTimeout(() => Notification.requestPermission(), 3000);
+  }
+
+  // Check reminders every minute
+  setInterval(() => {
+    const now = new Date();
+    const timeStr = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+    state.reminders.forEach(r => {
+      if (r.time === timeStr && Notification.permission === 'granted') {
+        new Notification('Aryash Hub 🔔', { body: r.title, icon: '/favicon.ico' });
+      }
+    });
+  }, 60000);
+});
 </script>
 </body>
 </html>
